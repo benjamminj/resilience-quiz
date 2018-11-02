@@ -1,24 +1,68 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import styles from './App.module.scss';
+import { Grit } from './Grit';
+
+const pages = {
+  HOME: 'home',
+  GRIT: 'grit',
+  OPTIMISM: 'optimism',
+  RESULTS: 'results',
+};
 
 class App extends Component {
+  state = {
+    page: pages.HOME,
+    grit: {
+      completed: false,
+      scores: {},
+    },
+    optimism: {
+      completed: false,
+      scores: {},
+    },
+  };
+
+  addScore = type => (id, score) => {
+    const { [type]: section } = this.state;
+
+    this.setState({
+      [type]: {
+        ...section,
+        scores: {
+          ...section.scores,
+          [id]: score,
+        },
+      },
+    });
+  };
+
+  updatePage = page => () => {
+    this.setState({ page });
+  };
+
   render() {
+    const { page } = this.state;
+
     return (
-      <div className={styles.app}>
+      <div>
         <header className={styles.header}>
-          <img src={logo} className={styles.logo} alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className={styles.link}
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
+          <h1>PAGE: {page.toUpperCase()}</h1>
+
+          {page === pages.GRIT && <Grit />}
+          <div className={styles.links}>
+            {Object.values(pages)
+              .filter(pageName => pageName !== page)
+              .map(pageName => (
+                <button
+                  key={pageName}
+                  onClick={this.updatePage(pageName)}
+                  type="button"
+                  className={styles.button}
+                >
+                  {`go to ${pageName}`.toUpperCase()}
+                </button>
+              ))}
+          </div>
         </header>
       </div>
     );
