@@ -3,7 +3,7 @@ import {
   REVERSE_SCORING as REVERSE,
 } from '../constants';
 
-export default [
+export const questions = [
   {
     question:
       'Even in hard times, I usually expect things will work out.',
@@ -32,3 +32,11 @@ export default [
     scoring: DEFAULT,
   },
 ];
+
+export const answers = [
+  'Not me at all',
+  'Not really me',
+  'Kind of me, but not really',
+  'Kind of me',
+  'For sure me',
+]

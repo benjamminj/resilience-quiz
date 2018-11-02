@@ -1,13 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import questions from './questions';
+import { questions as questionsData, answers as answersData } from './data';
 import { Quiz } from '../Quiz';
 import { Emoji } from '../Emoji';
 
-export const Grit = ({ questions }) => {
+export const Grit = ({ questions, answers }) => {
   return (
     <Quiz
       questions={questions}
+      answers={answers}
       review={
         <h2>
           We finished grit! <Emoji icon="🎉" label="confetti" />
@@ -19,8 +20,10 @@ export const Grit = ({ questions }) => {
 
 Grit.propTypes = {
   questions: PropTypes.array,
+  answers: PropTypes.arrayOf(PropTypes.string),
 };
 
 Grit.defaultProps = {
-  questions,
+  questions: questionsData,
+  answers: answersData,
 };

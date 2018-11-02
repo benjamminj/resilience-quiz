@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import styles from './Quiz.module.css';
+import styles from './Quiz.module.scss';
+import { Question } from './Question'
 
 export class Quiz extends Component {
   state = {
@@ -18,15 +19,31 @@ export class Quiz extends Component {
     this.setState({ index: Math.max(index - 1, 0) });
   };
 
+  handleInputChange = ev => {
+    console.log('WILL UPDATE SCORE WITH', ev.target.value);
+    this.gotoNext();
+  };
+
   render() {
-    const { questions, review } = this.props;
+    const { answers, questions, review } = this.props;
     const { index } = this.state;
 
     const current = questions[index];
 
     return (
       <div>
-        {index < questions.length ? <h2>{current.question}</h2> : review}
+        {questions.map(({ id, question }, i) => (
+          <Question
+            answers={answers}
+            question={question}
+            key={i}
+            id={`question-${id}`}
+            handleInputChange={this.handleInputChange}
+            isVisible={index === i}
+          />
+        ))}
+        {index >= questions.length && review}
+        
         {index !== 0 && (
           <button className={styles.button} onClick={this.gotoPrevious}>
             back

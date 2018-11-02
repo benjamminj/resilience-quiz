@@ -1,0 +1,31 @@
+.button {
+  margin: 0.5rem 0.25rem;
+  padding: 0.5rem;
+  border-radius: 4px;
+  font-size: 1rem;
+  color: black;
+  background: white;
+}
+
+.ul {
+  display: flex;
+  flex-direction: column;
+}
+
+.question {
+  display: none;
+}
+
+.isVisible {
+  display: block;
+}
+
+.answer {
+  min-width: 20rem;
+  padding: 0.75rem;
+  margin: 0.25rem;
+  max-width: 100%;
+  color: black;
+  background: white;
+  border-radius: 4px;
+}

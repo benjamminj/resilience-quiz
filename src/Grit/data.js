@@ -3,7 +3,7 @@ import {
   REVERSE_SCORING as REVERSE,
 } from '../constants';
 
-export default [
+export const questions = [
   {
     question:
       'I get super obsessed with new projects but tend to burn out fast.',
@@ -31,4 +31,12 @@ export default [
     id: 5,
     scoring: DEFAULT,
   },
+];
+
+export const answers = [
+  '1000 times nope',
+  'Not really',
+  'Ummm... No comment',
+  'Sort of',
+  'Totally',
 ];
