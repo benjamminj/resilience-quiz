@@ -1,7 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { optimism } from '../__data__';
+import questions from './questions';
 import { Quiz } from '../Quiz';
+import { Emoji } from '../Emoji';
 
 export const Optimism = ({ questions }) => {
   return (
@@ -9,10 +10,7 @@ export const Optimism = ({ questions }) => {
       questions={questions}
       review={
         <h2>
-          Review / Go to next page{' '}
-          <span role="img" aria-label="confetti icon">
-            🎉
-          </span>
+          We finished Optimism! <Emoji icon="😎" label="sunglasses" />
         </h2>
       }
     />
@@ -24,5 +22,5 @@ Optimism.propTypes = {
 };
 
 Optimism.defaultProps = {
-  questions: optimism,
+  questions: questions,
 };

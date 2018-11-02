@@ -69,7 +69,7 @@ class App extends Component {
             </div>
           ) : (
             <button
-              className={styles.button}
+              className={styles.homeButton}
               onClick={this.updatePage(pages.HOME)}
             >
               Go home

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import styles from './Quiz.module.css';
 
 export class Quiz extends Component {
   state = {
@@ -26,8 +27,16 @@ export class Quiz extends Component {
     return (
       <div>
         {index < questions.length ? <h2>{current.question}</h2> : review}
-        {index !== 0 && <button onClick={this.gotoPrevious}>back</button>}
-        {index < questions.length && <button onClick={this.gotoNext}>next</button>}
+        {index !== 0 && (
+          <button className={styles.button} onClick={this.gotoPrevious}>
+            back
+          </button>
+        )}
+        {index < questions.length && (
+          <button className={styles.button} onClick={this.gotoNext}>
+            next
+          </button>
+        )}
       </div>
     );
   }
