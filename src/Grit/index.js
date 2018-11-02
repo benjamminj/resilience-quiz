@@ -1,1 +1,1 @@
-export { default as Grit } from './Grit';
+export { Grit } from './Grit';

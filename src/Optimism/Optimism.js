@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { grit } from '../__data__';
+import { optimism } from '../__data__';
 import { Quiz } from '../Quiz';
 
-export const Grit = ({ questions }) => {
+export const Optimism = ({ questions }) => {
   return (
     <Quiz
       questions={questions}
@@ -19,10 +19,10 @@ export const Grit = ({ questions }) => {
   );
 };
 
-Grit.propTypes = {
+Optimism.propTypes = {
   questions: PropTypes.array,
 };
 
-Grit.defaultProps = {
-  questions: grit,
+Optimism.defaultProps = {
+  questions: optimism,
 };
