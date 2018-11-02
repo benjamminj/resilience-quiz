@@ -4,11 +4,10 @@ import { questions as questionsData, answers as answersData } from './data';
 import { Quiz } from '../Quiz';
 import { Emoji } from '../Emoji';
 
-export const Optimism = ({ questions, answers }) => {
+export const Optimism = (props) => {
   return (
     <Quiz
-      questions={questions}
-      answers={answers}
+      {...props}
       review={
         <h2>
           We finished Optimism! <Emoji icon="😎" label="sunglasses" />

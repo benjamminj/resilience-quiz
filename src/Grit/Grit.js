@@ -4,11 +4,10 @@ import { questions as questionsData, answers as answersData } from './data';
 import { Quiz } from '../Quiz';
 import { Emoji } from '../Emoji';
 
-export const Grit = ({ questions, answers }) => {
+export const Grit = (props) => {
   return (
     <Quiz
-      questions={questions}
-      answers={answers}
+      {...props}
       review={
         <h2>
           We finished grit! <Emoji icon="🎉" label="confetti" />

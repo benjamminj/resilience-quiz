@@ -15,6 +15,7 @@ const props = {
   questions,
   answers,
   review: 'Review page mock',
+  addScore: () => {},
 };
 
 describe('<Quiz />', () => {
@@ -45,7 +46,7 @@ describe('<Quiz />', () => {
     );
 
     fireEvent.click(getByText('next'));
-    
+
     expect(container.querySelector('.isVisible')).toBeNull();
     expect(getByText('Review page mock')).toBeInTheDocument();
   });

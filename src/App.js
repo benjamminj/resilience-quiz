@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import styles from './App.module.scss';
 import { Grit } from './Grit';
 import { Optimism } from './Optimism';
+import { REVERSE_SCORING } from './constants';
 
 const pages = {
   HOME: 'home',
@@ -13,26 +14,21 @@ const pages = {
 class App extends Component {
   state = {
     page: pages.HOME,
-    grit: {
-      completed: false,
-      scores: {},
-    },
-    optimism: {
-      completed: false,
-      scores: {},
-    },
+    grit: {},
+    optimism: {},
   };
 
-  addScore = type => (id, score) => {
+  addScore = type => (question, numberPossible, score) => {
     const { [type]: section } = this.state;
+
+    const { id, scoring } = question;
+    const finalScore =
+      scoring === REVERSE_SCORING ? numberPossible + 1 - score : score;
 
     this.setState({
       [type]: {
         ...section,
-        scores: {
-          ...section.scores,
-          [id]: score,
-        },
+        [id]: finalScore,
       },
     });
   };
@@ -49,8 +45,10 @@ class App extends Component {
         <header className={styles.header}>
           <h1>PAGE: {page.toUpperCase()}</h1>
 
-          {page === pages.GRIT && <Grit />}
-          {page === pages.OPTIMISM && <Optimism />}
+          {page === pages.GRIT && <Grit addScore={this.addScore('grit')} />}
+          {page === pages.OPTIMISM && (
+            <Optimism addScore={this.addScore('optimism')} />
+          )}
 
           {page === pages.HOME ? (
             <div className={styles.links}>

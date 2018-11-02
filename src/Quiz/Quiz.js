@@ -20,7 +20,12 @@ export class Quiz extends Component {
   };
 
   handleInputChange = value => {
-    console.log('WILL UPDATE SCORE WITH', value);
+    const { answers, addScore, questions } = this.props;
+    const { index } = this.state;
+
+    const current = questions[index];
+
+    addScore(current, answers.length, value);
     this.gotoNext();
   };
 
@@ -60,6 +65,7 @@ export class Quiz extends Component {
 }
 
 Quiz.propTypes = {
-  questions: PropTypes.array,
-  review: PropTypes.node,
+  addScore: PropTypes.func.isRequired,
+  questions: PropTypes.array.isRequired,
+  review: PropTypes.node.isRequired,
 };
