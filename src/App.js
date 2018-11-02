@@ -45,9 +45,9 @@ class App extends Component {
         <header className={styles.header}>
           <h1>PAGE: {page.toUpperCase()}</h1>
 
-          {page === pages.GRIT && <Grit addScore={this.addScore('grit')} />}
+          {page === pages.GRIT && <Grit addScore={this.addScore('grit')} onAfterFinished={this.updatePage(pages.OPTIMISM)}/>}
           {page === pages.OPTIMISM && (
-            <Optimism addScore={this.addScore('optimism')} />
+            <Optimism addScore={this.addScore('optimism')} onAfterFinished={this.updatePage(pages.RESULTS)}/>
           )}
 
           {page === pages.HOME ? (

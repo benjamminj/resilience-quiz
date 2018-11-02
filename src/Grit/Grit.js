@@ -4,20 +4,26 @@ import { questions as questionsData, answers as answersData } from './data';
 import { Quiz } from '../Quiz';
 import { Emoji } from '../Emoji';
 
-export const Grit = (props) => {
+export const Grit = props => {
   return (
     <Quiz
       {...props}
       review={
-        <h2>
-          We finished grit! <Emoji icon="🎉" label="confetti" />
-        </h2>
+        <>
+          <h2>
+            We finished grit! <Emoji icon="🎉" label="confetti" />
+          </h2>
+          <button style={{ width: '100%', background: 'white', padding: '1rem', color: 'black' }} onClick={props.onAfterFinished}>
+            Next
+          </button>
+        </>
       }
     />
   );
 };
 
 Grit.propTypes = {
+  onAfterFinished: PropTypes.func.isRequired,
   questions: PropTypes.array,
   answers: PropTypes.arrayOf(PropTypes.string),
 };

@@ -53,12 +53,6 @@ export class Quiz extends Component {
             back
           </button>
         )}
-
-        {index < questions.length && (
-          <button className={styles.button} onClick={this.gotoNext}>
-            next
-          </button>
-        )}
       </div>
     );
   }
