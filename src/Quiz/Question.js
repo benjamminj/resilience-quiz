@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
 import styles from './Quiz.module.scss'; // TODO -- separate scss
-import { Radio } from '../Radio';
 
 export const Question = ({
   id,
@@ -17,7 +16,10 @@ export const Question = ({
       {answers.map((answer, j) => (
         <li key={j} className={styles.li}>
           {/* TODO -- better id */}
-          <button className={styles.answer} onClick={handleInputChange}>
+          <button
+            className={styles.answer}
+            onClick={() => handleInputChange(j + 1)}
+          >
             {answer}
           </button>
         </li>

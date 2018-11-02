@@ -19,16 +19,14 @@ export class Quiz extends Component {
     this.setState({ index: Math.max(index - 1, 0) });
   };
 
-  handleInputChange = ev => {
-    console.log('WILL UPDATE SCORE WITH', ev.target.value);
+  handleInputChange = value => {
+    console.log('WILL UPDATE SCORE WITH', value);
     this.gotoNext();
   };
 
   render() {
     const { answers, questions, review } = this.props;
     const { index } = this.state;
-
-    const current = questions[index];
 
     return (
       <div>
@@ -42,6 +40,7 @@ export class Quiz extends Component {
             isVisible={index === i}
           />
         ))}
+
         {index >= questions.length && review}
         
         {index !== 0 && (
@@ -49,6 +48,7 @@ export class Quiz extends Component {
             back
           </button>
         )}
+
         {index < questions.length && (
           <button className={styles.button} onClick={this.gotoNext}>
             next
