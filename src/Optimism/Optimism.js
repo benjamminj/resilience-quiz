@@ -3,12 +3,15 @@ import PropTypes from 'prop-types';
 import { questions as questionsData, answers as answersData } from './data';
 import { Quiz } from '../Quiz';
 import { Emoji } from '../Emoji';
+import { colors } from '../styles';
 
 export const Optimism = props => {
   return (
     <Quiz
       {...props}
       name="Optimism"
+      background={colors.secondaryLight}
+      accent={colors.secondary}
       review={
         <>
           <h2>

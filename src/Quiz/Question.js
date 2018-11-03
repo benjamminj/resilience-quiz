@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { Card, CardContent } from '../Card';
 import styled, { css } from 'react-emotion';
 import { colors } from '../styles';
+import { REVERSE_SCORING } from '../constants';
 
 const QuestionCard = styled(Card)`
   display: none;
@@ -25,12 +26,14 @@ const Button = styled('button')`
   font-weight: bold;
   text-align: left;
 
-  ${props => props.active && css`
-    background: ${props.color};
-    border-color: ${props.color};
-    /* TODO -- allow configurable color */
-    color: ${colors.white};
-  `}
+  ${props =>
+    props.active &&
+    css`
+      background: ${props.color};
+      border-color: ${props.color};
+      /* TODO -- allow configurable color */
+      color: ${colors.white};
+    `};
 `;
 
 const List = styled('ul')`
@@ -42,9 +45,11 @@ export const Question = ({
   id,
   color,
   question,
+  scoring,
   answers,
   isVisible,
   handleInputChange,
+  selection,
 }) => (
   <QuestionCard isVisible={isVisible}>
     <CardContent>
@@ -52,11 +57,15 @@ export const Question = ({
       <List>
         {answers.map((answer, j) => (
           <li key={j}>
-            {/* TODO -- better id */}
             <Button
               type="button"
               color={color}
-              active={false} // TODO -- connect
+              active={
+                // TODO -- clean up
+                scoring === REVERSE_SCORING
+                  ? answers.length - selection === j
+                  : selection === j + 1
+              }
               onClick={() => handleInputChange(j + 1)}
             >
               {answer}
@@ -75,8 +84,11 @@ Question.propTypes = {
   answers: PropTypes.arrayOf(PropTypes.string).isRequired,
   isVisible: PropTypes.bool.isRequired,
   handleInputChange: PropTypes.func.isRequired,
+  scoring: PropTypes.string.isRequired,
+  selection: PropTypes.number,
 };
 
 Question.defaultProps = {
   color: colors.primaryDark,
+  selection: null,
 };

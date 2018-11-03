@@ -6,7 +6,6 @@ import { Container } from '../Container';
 import styled from 'react-emotion';
 import { headerHeight, colors } from '../styles';
 
-// TODO -- dynamic color
 const QuizContainer = styled(Container)`
   background: ${({ background }) => background};
   padding-top: calc(${headerHeight} + 1rem);
@@ -40,7 +39,15 @@ export class Quiz extends Component {
   };
 
   render() {
-    const { name, background, answers, questions, review } = this.props;
+    const {
+      accent,
+      name,
+      background,
+      answers,
+      questions,
+      review,
+      selections,
+    } = this.props;
     const { index } = this.state;
 
     return (
@@ -48,10 +55,13 @@ export class Quiz extends Component {
         <Header back={index !== 0 ? this.gotoPrevious : null}>{name}</Header>
 
         <QuizContainer background={background}>
-          {questions.map(({ id, question }, i) => (
+          {questions.map(({ id, question, scoring }, i) => (
             <Question
+              color={accent}
+              selection={selections[id]}
               answers={answers}
               question={question}
+              scoring={scoring}
               key={i}
               id={`question-${id}`}
               handleInputChange={this.handleInputChange}
@@ -66,7 +76,8 @@ export class Quiz extends Component {
   }
 }
 
-Quiz.propTypes = { 
+Quiz.propTypes = {
+  selections: PropTypes.object,
   background: PropTypes.string,
   name: PropTypes.string.isRequired,
   addScore: PropTypes.func.isRequired,
@@ -75,5 +86,7 @@ Quiz.propTypes = {
 };
 
 Quiz.defaultProps = {
+  selections: {},
   background: colors.primaryLight,
-}
+  accent: colors.primary,
+};

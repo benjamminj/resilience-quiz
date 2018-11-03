@@ -45,7 +45,7 @@ class App extends Component {
   };
 
   render() {
-    const { page } = this.state;
+    const { page, optimism, grit } = this.state;
 
     return (
       <Wrapper>
@@ -53,12 +53,15 @@ class App extends Component {
 
         {page === pages.GRIT && (
           <Grit
+            selections={grit}
             addScore={this.addScore('grit')}
             onAfterFinished={this.updatePage(pages.OPTIMISM)}
           />
         )}
+        
         {page === pages.OPTIMISM && (
           <Optimism
+            selections={optimism}
             addScore={this.addScore('optimism')}
             onAfterFinished={this.updatePage(pages.RESULTS)}
           />
