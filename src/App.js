@@ -5,6 +5,7 @@ import { Grit } from './Grit';
 import { Optimism } from './Optimism';
 import { REVERSE_SCORING } from './constants';
 import { Results } from './Results/Results';
+import { Home } from './Home';
 
 const pages = {
   HOME: 'home',
@@ -49,7 +50,7 @@ class App extends Component {
 
     return (
       <Wrapper>
-        {page === pages.HOME && <h1>PAGE: {page.toUpperCase()}</h1>}
+        {page === pages.HOME && <Home start={this.updatePage(pages.GRIT)}/>}
 
         {page === pages.GRIT && (
           <Grit
@@ -69,27 +70,9 @@ class App extends Component {
 
         {page === pages.RESULTS && (
           <Results
-            goBack={this.updatePage(pages.HOME)}
             grit={grit}
             optimism={optimism}
           />
-        )}
-
-        {page === pages.HOME && (
-          <div className={styles.links}>
-            {Object.values(pages)
-              .filter(pageName => pageName !== page)
-              .map(pageName => (
-                <button
-                  key={pageName}
-                  onClick={this.updatePage(pageName)}
-                  type="button"
-                  className={styles.button}
-                >
-                  {`go to ${pageName}`.toUpperCase()}
-                </button>
-              ))}
-          </div>
         )}
       </Wrapper>
     );

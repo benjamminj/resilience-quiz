@@ -46,13 +46,13 @@ const CardHeader = styled('div')`
 const getScore = selections =>
   Object.values(selections).reduce((sum, value) => sum + value, 0);
 
-export const Results = ({ goBack, grit, optimism }) => {
+export const Results = ({ grit, optimism }) => {
   const gritScore = getScore(grit);
   const optimismScore = getScore(optimism);
 
   return (
     <div>
-      <Header back={goBack}>
+      <Header>
         <H1>Results</H1>
       </Header>
       <ResultsContainer>
