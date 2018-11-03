@@ -18,16 +18,9 @@ export class Quiz extends Component {
     index: 0,
   };
 
-  gotoNext = () => {
-    const { questions } = this.props;
-    const { index } = this.state;
-    this.setState({ index: Math.min(index + 1, questions.length) });
-  };
-
-  gotoPrevious = () => {
-    const { index } = this.state;
-    this.setState({ index: Math.max(index - 1, 0) });
-  };
+  componentDidMount() {
+    console.log('MOUNTS', this.props.currentId, this.props.location.href)
+  }
 
   handleInputChange = value => {
     const { answers, addScore, questions, currentId } = this.props;
@@ -41,6 +34,10 @@ export class Quiz extends Component {
 
     navigate(nextRoute);
   };
+
+  componentWillUnmount() {
+    console.log('UNMOUNTS', this.props.location.href);
+  }
 
   render() {
     const {
@@ -56,6 +53,7 @@ export class Quiz extends Component {
     const index = currentId;
     const { scoring, question, id } = questions[index] || {};
 
+    console.log('RENDERS', currentId)
     return (
       <div>
         <Header back={index !== 0 ? this.gotoPrevious : null}>{name}</Header>

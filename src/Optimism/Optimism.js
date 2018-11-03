@@ -4,7 +4,8 @@ import { questions as questionsData, answers as answersData } from './data';
 import { Quiz } from '../Quiz';
 import { Emoji } from '../Emoji';
 import { colors } from '../styles';
-import { Router, Link } from '@reach/router';
+import { Link } from '@reach/router';
+import { PosedRouter } from '../PosedRouter';
 
 const Intro = () => (
   <div>
@@ -34,7 +35,7 @@ const Review = ({ linkTo }) => (
 
 export const Optimism = props => {
   return (
-    <Router>
+    <PosedRouter>
       <Intro default />
       <Quiz
         {...props}
@@ -44,7 +45,7 @@ export const Optimism = props => {
         accent={colors.secondary.main}
       />
       <Review linkTo={props.linkTo} path="review" />
-    </Router>
+    </PosedRouter>
   );
 };
 

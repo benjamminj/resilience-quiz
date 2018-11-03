@@ -4,7 +4,9 @@ import { questions as questionsData, answers as answersData } from './data';
 import { Quiz } from '../Quiz';
 import { Emoji } from '../Emoji';
 import { colors } from '../styles';
-import { Router, Link } from '@reach/router';
+import posed, { PoseGroup } from 'react-pose';
+import { Router, Link, Location } from '@reach/router';
+import { PosedRouter } from '../PosedRouter';
 
 const Index = () => (
   <div>
@@ -34,8 +36,8 @@ const Review = ({ linkTo }) => (
 
 export const Grit = props => {
   return (
-    <Router>
-      <Index default />
+    <PosedRouter>
+      <Index path="/" />
       <Quiz
         {...props}
         path="/:currentId"
@@ -43,7 +45,7 @@ export const Grit = props => {
         accent={colors.primary.dark}
       />
       <Review linkTo={props.linkTo} path="review" />
-    </Router>
+    </PosedRouter>
   );
 };
 
