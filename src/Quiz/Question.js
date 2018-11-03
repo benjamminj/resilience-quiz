@@ -4,6 +4,7 @@ import { Card, CardContent } from '../Card';
 import styled, { css } from 'react-emotion';
 import { colors } from '../styles';
 import { REVERSE_SCORING } from '../constants';
+import {Answer} from './Answer';
 
 const QuestionCard = styled(Card)`
   display: none;
@@ -12,27 +13,6 @@ const QuestionCard = styled(Card)`
     isVisible &&
     css`
       display: block;
-    `};
-`;
-
-const Button = styled('button')`
-  background: transparent;
-  color: ${colors.greyDark};
-  border: 2px solid ${colors.greyDark};
-  padding: 0.75rem;
-  width: 100%;
-  border-radius: 4px;
-  margin: 0.25rem 0;
-  font-weight: bold;
-  text-align: left;
-
-  ${props =>
-    props.active &&
-    css`
-      background: ${props.color};
-      border-color: ${props.color};
-      /* TODO -- allow configurable color */
-      color: ${colors.white};
     `};
 `;
 
@@ -51,14 +31,16 @@ export const Question = ({
   handleInputChange,
   selection,
 }) => (
-  <QuestionCard isVisible={isVisible} data-testid={isVisible ? 'visible' : null}>
+  <QuestionCard
+    isVisible={isVisible}
+    data-testid={isVisible ? 'visible' : null}
+  >
     <CardContent>
       <h2>{question}</h2>
       <List>
         {answers.map((answer, j) => (
           <li key={j}>
-            <Button
-              type="button"
+            <Answer
               color={color}
               active={
                 // TODO -- clean up
@@ -69,7 +51,7 @@ export const Question = ({
               onClick={() => handleInputChange(j + 1)}
             >
               {answer}
-            </Button>
+            </Answer>
           </li>
         ))}
       </List>
