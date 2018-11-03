@@ -2,17 +2,21 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled, { css } from 'react-emotion';
 import { colors } from '../styles';
+import { rgba } from 'polished';
 
 const Button = styled('button')`
   color: ${colors.greyDark};
   border-width: 2px;
   border-style: solid;
-  padding: 0.75rem;
+  padding: 1.25rem;
+  font-size: 1.25rem;
   width: 100%;
   border-radius: 4px;
   margin: 0.25rem 0;
   font-weight: bold;
   text-align: left;
+  background: ${colors.white};
+  box-shadow: 0 2px 4px ${rgba('#000', 0.2)};
   transition: background 50ms ease-in, border-color 50ms ease-in,
     color 50ms ease-in;
 

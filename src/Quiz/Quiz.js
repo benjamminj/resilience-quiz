@@ -1,26 +1,47 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Question } from './Question';
+// import { Question } from './Question';
+import { REVERSE_SCORING } from '../constants';
 import { Header } from '../Header/Header';
 import { Container } from '../Container';
 import styled from 'react-emotion';
 import { headerHeight, colors } from '../styles';
 import { navigate } from '@reach/router';
+import { Answer } from './Answer';
 
 const QuizContainer = styled(Container)`
   background: ${({ background }) => background};
   padding-top: calc(${headerHeight} + 1rem);
   min-height: 100vh;
+  display: grid;
+  /* TODO -- check on Safari & use flex fallback if necessary */
+  grid-template-rows: auto 1fr auto;
+  align-items: center;
+  text-align: center;
+`;
+
+const Question = styled('h2')`
+  font-size: 2rem;
+`;
+
+const QuestionNumber = styled('h3')`
+  /**
+   * Keep the h3 below the h2 for SEO / a11y purposes,
+   * but make it appear "above" the h2
+   */
+  grid-row: 1;
+  margin: 0;
+`;
+
+const AnswersList = styled('ul')`
+  display: flex;
+  flex-direction: column;
 `;
 
 export class Quiz extends Component {
   state = {
     index: 0,
   };
-
-  componentDidMount() {
-    console.log('MOUNTS', this.props.currentId, this.props.location.href)
-  }
 
   handleInputChange = value => {
     const { answers, addScore, questions, currentId } = this.props;
@@ -35,10 +56,6 @@ export class Quiz extends Component {
     navigate(nextRoute);
   };
 
-  componentWillUnmount() {
-    console.log('UNMOUNTS', this.props.location.href);
-  }
-
   render() {
     const {
       currentId,
@@ -50,26 +67,39 @@ export class Quiz extends Component {
       selections,
     } = this.props;
 
-    const index = currentId;
+    const index = Number(currentId);
     const { scoring, question, id } = questions[index] || {};
+    const answer = selections[id];
 
-    console.log('RENDERS', currentId)
+    console.log('RENDERS', currentId);
     return (
       <div>
         <Header back={index !== 0 ? this.gotoPrevious : null}>{name}</Header>
 
         <QuizContainer background={background}>
-          <Question
-            color={accent}
-            selection={selections[id]}
-            answers={answers}
-            question={question}
-            scoring={scoring}
-            key={id}
-            id={`question-${id}`}
-            handleInputChange={this.handleInputChange}
-            isVisible={index === id}
-          />
+          <Question>{question}</Question>
+          <QuestionNumber>
+            {index + 1} of {questions.length}
+          </QuestionNumber>
+
+          <AnswersList>
+            {answers.map((choice, i) => (
+              <li key={i}>
+                <Answer
+                  color={accent}
+                  active={
+                    // TODO -- clean up
+                    scoring === REVERSE_SCORING
+                      ? answers.length - answer === i
+                      : answer === i + 1
+                  }
+                  onClick={() => this.handleInputChange(i + 1)}
+                >
+                  {choice}
+                </Answer>
+              </li>
+            ))}
+          </AnswersList>
         </QuizContainer>
       </div>
     );

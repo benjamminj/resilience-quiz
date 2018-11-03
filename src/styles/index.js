@@ -8,7 +8,7 @@ export const colors = {
   greyDark: '#666',
   // TODO -- palette
   primary: {
-    light: '#c8efec',
+    light: '#f5fbfa',
     main: 'lightseagreen',
     dark: '#199089',
   },
