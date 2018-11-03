@@ -9,7 +9,7 @@ const RouteContainer = posed.div({
 
 export const PosedRouter = ({ children }) => (
   <Location>
-    {({ location }) => console.log(location) || (
+    {({ location }) => (
       <PoseGroup>
         <RouteContainer key={location.key} initialPose="init">
           <Router location={location}>{children}</Router>

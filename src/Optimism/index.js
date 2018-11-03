@@ -43,23 +43,3 @@ export const OptimismQuiz = props => (
     accent={colors.secondary.main}
   />
 );
-
-export const Optimism = props => {
-  return (
-    <PosedRouter>
-      <Intro default />
-
-      <Review linkTo={props.linkTo} path="review" />
-    </PosedRouter>
-  );
-};
-
-Optimism.propTypes = {
-  questions: PropTypes.array,
-  answers: PropTypes.arrayOf(PropTypes.string),
-};
-
-Optimism.defaultProps = {
-  questions: questionsData,
-  answers: answersData,
-};
