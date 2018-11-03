@@ -8,6 +8,7 @@ export const Grit = props => {
   return (
     <Quiz
       {...props}
+      name="Grit"
       review={
         <>
           <h2>

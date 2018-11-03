@@ -43,7 +43,8 @@ class App extends Component {
     return (
       <div>
         <header className={styles.header}>
-          <h1>PAGE: {page.toUpperCase()}</h1>
+          {page === pages.HOME && <h1>PAGE: {page.toUpperCase()}</h1>}
+          
 
           {page === pages.GRIT && <Grit addScore={this.addScore('grit')} onAfterFinished={this.updatePage(pages.OPTIMISM)}/>}
           {page === pages.OPTIMISM && (

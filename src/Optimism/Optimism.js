@@ -8,6 +8,7 @@ export const Optimism = props => {
   return (
     <Quiz
       {...props}
+      name="Optimism"
       review={
         <>
           <h2>

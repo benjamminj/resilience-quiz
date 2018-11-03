@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import styles from './Quiz.module.scss';
-import { Question } from './Question'
+import { Question } from './Question';
+import { Header } from '../Header/Header';
 
 export class Quiz extends Component {
   state = {
@@ -30,11 +31,13 @@ export class Quiz extends Component {
   };
 
   render() {
-    const { answers, questions, review } = this.props;
+    const { name, answers, questions, review } = this.props;
     const { index } = this.state;
 
     return (
       <div>
+        <Header>{name}</Header>
+
         {questions.map(({ id, question }, i) => (
           <Question
             answers={answers}
@@ -47,7 +50,7 @@ export class Quiz extends Component {
         ))}
 
         {index >= questions.length && review}
-        
+
         {index !== 0 && (
           <button className={styles.button} onClick={this.gotoPrevious}>
             back
@@ -59,6 +62,7 @@ export class Quiz extends Component {
 }
 
 Quiz.propTypes = {
+  name: PropTypes.string.isRequired,
   addScore: PropTypes.func.isRequired,
   questions: PropTypes.array.isRequired,
   review: PropTypes.node.isRequired,
