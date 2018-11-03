@@ -21,6 +21,7 @@ code {
 }
 
 button {
+  padding: 0;
   border-width: 0;
   background: transparent;
   color: inherit;
