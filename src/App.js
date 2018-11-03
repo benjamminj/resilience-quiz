@@ -56,7 +56,7 @@ class App extends Component {
           <Grit
             selections={grit}
             addScore={this.addScore('grit')}
-            onAfterFinished={this.updatePage(pages.OPTIMISM)}
+              onAfterFinished={this.updatePage(pages.OPTIMISM)}
           />
         )}
 
