@@ -82,7 +82,6 @@ Quiz.propTypes = {
   name: PropTypes.string.isRequired,
   addScore: PropTypes.func.isRequired,
   questions: PropTypes.array.isRequired,
-  review: PropTypes.node.isRequired,
 };
 
 Quiz.defaultProps = {

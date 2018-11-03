@@ -5,10 +5,7 @@ import { Optimism } from './Optimism';
 import { REVERSE_SCORING } from './constants';
 import { Results } from './Results/Results';
 import { Home } from './Home';
-import { Router, Location } from '@reach/router';
-import posed, { PoseGroup } from 'react-pose';
-
-const RouteContainer = posed.div();
+import { Router } from '@reach/router';
 
 const Wrapper = styled('div')`
   background-color: #fefefe;
@@ -44,7 +41,7 @@ class App extends Component {
         <Router>
           <Home path="/" />
           <Grit
-            path="grit"
+            path="grit/*"
             selections={grit}
             addScore={this.addScore('grit')}
             linkTo="/optimism"

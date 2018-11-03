@@ -4,7 +4,7 @@ import { Router, Location } from '@reach/router';
 
 const RouteContainer = posed.div({
   enter: { opacity: 1, delay: 300 },
-  exit: { opacity: 0 },
+  exit: { opacity: 0, afterChildren: 300 },
 });
 
 export const PosedRouter = ({ children }) => (
