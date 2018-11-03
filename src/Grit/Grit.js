@@ -3,12 +3,14 @@ import PropTypes from 'prop-types';
 import { questions as questionsData, answers as answersData } from './data';
 import { Quiz } from '../Quiz';
 import { Emoji } from '../Emoji';
+import { colors } from '../styles';
 
 export const Grit = props => {
   return (
     <Quiz
       {...props}
       name="Grit"
+      accent={colors.primary.dark}
       review={
         <>
           <h2>

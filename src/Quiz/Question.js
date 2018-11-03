@@ -89,6 +89,6 @@ Question.propTypes = {
 };
 
 Question.defaultProps = {
-  color: colors.primaryDark,
+  color: colors.primary.dark,
   selection: null,
 };

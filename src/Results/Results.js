@@ -26,10 +26,10 @@ const H3 = styled('h3')`
 
 const H4 = styled('h4')`
   margin: 0 0 1rem;
-`
+`;
 
 const ResultsContainer = styled(Container)`
-  background: ${colors.primaryLight};
+  background: ${colors.primary.light};
   padding-top: calc(${headerHeight} + 1rem);
   min-height: 100vh;
 `;
@@ -43,33 +43,44 @@ const CardHeader = styled('div')`
   justify-content: space-between;
 `;
 
-export const Results = ({ goBack }) => (
-  <div>
-    <Header back={goBack}>
-      <H1>Results</H1>
-    </Header>
-    <ResultsContainer>
-      <H2>FPO TOTAL SECTION</H2>
+const getScore = selections =>
+  Object.values(selections).reduce((sum, value) => sum + value, 0);
 
-      <ResultsCard>
-        <CardContent>
-          <CardHeader>
-            <H3>Grit</H3>
-            <H4>25 / 25</H4>
-          </CardHeader>
+export const Results = ({ goBack, grit, optimism }) => {
+  const gritScore = getScore(grit);
+  const optimismScore = getScore(optimism);
 
-          <ProgressBar progress={100} />
-        </CardContent>
-      </ResultsCard>
-      <ResultsCard>
-        <CardContent>
-          <CardHeader>
-            <H3>Optimism</H3>
-            <H4>20 / 25</H4>
-          </CardHeader>
-          <ProgressBar progress={80} color={colors.secondary} />
-        </CardContent>
-      </ResultsCard>
-    </ResultsContainer>
-  </div>
-);
+  return (
+    <div>
+      <Header back={goBack}>
+        <H1>Results</H1>
+      </Header>
+      <ResultsContainer>
+        <H2>FPO TOTAL SECTION</H2>
+
+        <ResultsCard>
+          <CardContent>
+            <CardHeader>
+              <H3>Grit</H3>
+              <H4>{gritScore} / 25</H4>
+            </CardHeader>
+
+            <ProgressBar progress={gritScore * 4} />
+          </CardContent>
+        </ResultsCard>
+        <ResultsCard>
+          <CardContent>
+            <CardHeader>
+              <H3>Optimism</H3>
+              <H4>{optimismScore} / 25</H4>
+            </CardHeader>
+            <ProgressBar
+              progress={optimismScore * 4}
+              color={colors.secondary.main}
+            />
+          </CardContent>
+        </ResultsCard>
+      </ResultsContainer>
+    </div>
+  );
+};

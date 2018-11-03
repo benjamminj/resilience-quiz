@@ -43,5 +43,5 @@ ProgressBar.propTypes = {
 
 ProgressBar.defaultProps = {
   progress: 100,
-  color: colors.primary,
+  color: colors.primary.main,
 };

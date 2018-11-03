@@ -10,8 +10,8 @@ export const Optimism = props => {
     <Quiz
       {...props}
       name="Optimism"
-      background={colors.secondaryLight}
-      accent={colors.secondary}
+      background={colors.secondary.light}
+      accent={colors.secondary.main}
       review={
         <>
           <h2>

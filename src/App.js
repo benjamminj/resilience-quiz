@@ -58,7 +58,7 @@ class App extends Component {
             onAfterFinished={this.updatePage(pages.OPTIMISM)}
           />
         )}
-        
+
         {page === pages.OPTIMISM && (
           <Optimism
             selections={optimism}
@@ -68,7 +68,11 @@ class App extends Component {
         )}
 
         {page === pages.RESULTS && (
-          <Results goBack={this.updatePage(pages.HOME)} />
+          <Results
+            goBack={this.updatePage(pages.HOME)}
+            grit={grit}
+            optimism={optimism}
+          />
         )}
 
         {page === pages.HOME && (

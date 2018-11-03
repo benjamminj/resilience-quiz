@@ -87,6 +87,6 @@ Quiz.propTypes = {
 
 Quiz.defaultProps = {
   selections: {},
-  background: colors.primaryLight,
-  accent: colors.primary,
+  background: colors.primary.light,
+  accent: colors.primary.main,
 };
