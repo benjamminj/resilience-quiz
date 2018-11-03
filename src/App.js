@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import styled from 'react-emotion';
-import styles from './App.module.scss';
 import { Grit } from './Grit';
 import { Optimism } from './Optimism';
 import { REVERSE_SCORING } from './constants';
