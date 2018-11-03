@@ -5,24 +5,12 @@ import App from './App';
 describe('<App />', () => {
   test('renders home page by default', () => {
     const { getByText } = render(<App />)
-    expect(getByText('PAGE: HOME')).toBeInTheDocument();
+    expect(getByText('Welcome to Resilience.')).toBeInTheDocument();
   });
 
-  test('routes to the grit page', () => {
+  test('clicking CTA routes to grit quiz', () => {
     const { getByText } = render(<App />);
-    fireEvent.click(getByText('GO TO GRIT'))
+    fireEvent.click(getByText('Get started'))
     expect(getByText('Grit')).toBeInTheDocument();
-  })
-
-  test('routes to the optimism page', () => {
-    const { getByText } = render(<App />);
-    fireEvent.click(getByText('GO TO OPTIMISM'))
-    expect(getByText('Optimism')).toBeInTheDocument();
-  })
-
-  test('routes to the results page', () => {
-    const { getByText } = render(<App />);
-    fireEvent.click(getByText('GO TO RESULTS'))
-    expect(getByText('Results')).toBeInTheDocument();
-  })
+  });
 });
