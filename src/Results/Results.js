@@ -43,10 +43,9 @@ const CardHeader = styled('div')`
   justify-content: space-between;
 `;
 
-
-export const Results = () => (
+export const Results = ({ goBack }) => (
   <div>
-    <Header back={() => console.log('back')}>
+    <Header back={goBack}>
       <H1>Results</H1>
     </Header>
     <ResultsContainer>

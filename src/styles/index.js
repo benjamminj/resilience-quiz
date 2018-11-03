@@ -9,7 +9,7 @@ export const colors = {
   // TODO -- palette
   primaryLight: '#c8efec',
   primary: 'lightseagreen',
-  primaryDark: '',
+  primaryDark: '#199089',
   secondaryLight: '',
   secondary: 'salmon',
   secondaryDark: '',

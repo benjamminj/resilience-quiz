@@ -64,7 +64,9 @@ class App extends Component {
           />
         )}
 
-        {page === pages.RESULTS && <Results />}
+        {page === pages.RESULTS && (
+          <Results goBack={this.updatePage(pages.HOME)} />
+        )}
 
         {page === pages.HOME && (
           <div className={styles.links}>

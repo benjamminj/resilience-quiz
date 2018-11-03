@@ -11,18 +11,18 @@ describe('<App />', () => {
   test('routes to the grit page', () => {
     const { getByText } = render(<App />);
     fireEvent.click(getByText('GO TO GRIT'))
-    expect(getByText('PAGE: GRIT')).toBeInTheDocument();
+    expect(getByText('Grit')).toBeInTheDocument();
   })
 
   test('routes to the optimism page', () => {
     const { getByText } = render(<App />);
     fireEvent.click(getByText('GO TO OPTIMISM'))
-    expect(getByText('PAGE: OPTIMISM')).toBeInTheDocument();
+    expect(getByText('Optimism')).toBeInTheDocument();
   })
 
   test('routes to the results page', () => {
     const { getByText } = render(<App />);
     fireEvent.click(getByText('GO TO RESULTS'))
-    expect(getByText('PAGE: RESULTS')).toBeInTheDocument();
+    expect(getByText('Results')).toBeInTheDocument();
   })
 });

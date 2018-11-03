@@ -1,8 +1,17 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import styles from './Quiz.module.scss';
 import { Question } from './Question';
 import { Header } from '../Header/Header';
+import { Container } from '../Container';
+import styled from 'react-emotion';
+import { headerHeight, colors } from '../styles';
+
+// TODO -- dynamic color
+const QuizContainer = styled(Container)`
+  background: ${({ background }) => background};
+  padding-top: calc(${headerHeight} + 1rem);
+  min-height: 100vh;
+`;
 
 export class Quiz extends Component {
   state = {
@@ -31,39 +40,40 @@ export class Quiz extends Component {
   };
 
   render() {
-    const { name, answers, questions, review } = this.props;
+    const { name, background, answers, questions, review } = this.props;
     const { index } = this.state;
 
     return (
       <div>
-        <Header>{name}</Header>
+        <Header back={index !== 0 ? this.gotoPrevious : null}>{name}</Header>
 
-        {questions.map(({ id, question }, i) => (
-          <Question
-            answers={answers}
-            question={question}
-            key={i}
-            id={`question-${id}`}
-            handleInputChange={this.handleInputChange}
-            isVisible={index === i}
-          />
-        ))}
+        <QuizContainer background={background}>
+          {questions.map(({ id, question }, i) => (
+            <Question
+              answers={answers}
+              question={question}
+              key={i}
+              id={`question-${id}`}
+              handleInputChange={this.handleInputChange}
+              isVisible={index === i}
+            />
+          ))}
 
-        {index >= questions.length && review}
-
-        {index !== 0 && (
-          <button className={styles.button} onClick={this.gotoPrevious}>
-            back
-          </button>
-        )}
+          {index >= questions.length && review}
+        </QuizContainer>
       </div>
     );
   }
 }
 
-Quiz.propTypes = {
+Quiz.propTypes = { 
+  background: PropTypes.string,
   name: PropTypes.string.isRequired,
   addScore: PropTypes.func.isRequired,
   questions: PropTypes.array.isRequired,
   review: PropTypes.node.isRequired,
 };
+
+Quiz.defaultProps = {
+  background: colors.primaryLight,
+}

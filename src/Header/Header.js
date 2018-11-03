@@ -4,8 +4,6 @@ import styled from 'react-emotion';
 import { colors, headerHeight } from '../styles';
 import { ReactComponent as ArrowIcon } from '../icons/arrow-left.svg';
 
-const iconWidth = '16px';
-
 const StyledHeader = styled('header')`
   background: ${colors.white};
   border-bottom: 1px solid ${colors.greyLight};
