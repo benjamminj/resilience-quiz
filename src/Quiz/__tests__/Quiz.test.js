@@ -15,6 +15,7 @@ const answers = ['nope', 'nah', 'meh', 'ok', 'yarp'];
 const props = {
   questions,
   answers,
+  currentId: 0,
   name: 'test',
   review: 'Review page mock',
   addScore: () => {},

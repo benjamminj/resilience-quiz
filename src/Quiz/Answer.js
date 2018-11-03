@@ -2,8 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled, { css } from 'react-emotion';
 import { colors } from '../styles';
-import posed from 'react-pose';
-import { rgba } from 'polished';
 
 const Button = styled('button')`
   color: ${colors.greyDark};

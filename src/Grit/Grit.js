@@ -48,7 +48,7 @@ export const Grit = props => {
 };
 
 Grit.propTypes = {
-  onAfterFinished: PropTypes.func.isRequired,
+  linkTo: PropTypes.string.isRequired,
   questions: PropTypes.array,
   answers: PropTypes.arrayOf(PropTypes.string),
 };
