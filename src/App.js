@@ -3,6 +3,7 @@ import styles from './App.module.scss';
 import { Grit } from './Grit';
 import { Optimism } from './Optimism';
 import { REVERSE_SCORING } from './constants';
+import { Results } from './Results/Results';
 
 const pages = {
   HOME: 'home',
@@ -49,6 +50,10 @@ class App extends Component {
           {page === pages.GRIT && <Grit addScore={this.addScore('grit')} onAfterFinished={this.updatePage(pages.OPTIMISM)}/>}
           {page === pages.OPTIMISM && (
             <Optimism addScore={this.addScore('optimism')} onAfterFinished={this.updatePage(pages.RESULTS)}/>
+          )}
+
+          {page === pages.RESULTS && (
+            <Results />
           )}
 
           {page === pages.HOME ? (

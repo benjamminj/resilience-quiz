@@ -2,7 +2,6 @@ import styled from 'react-emotion';
 import { colors } from '../styles';
 
 export const Header = styled('header')`
-  width: 100%;
   background: ${colors.white};
   border-bottom: 1px solid ${colors.greyLight};
   padding: 1rem;
