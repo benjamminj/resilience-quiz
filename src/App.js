@@ -5,13 +5,7 @@ import { Optimism } from './Optimism';
 import { REVERSE_SCORING } from './constants';
 import { Results } from './Results/Results';
 import { Home } from './Home';
-
-const pages = {
-  HOME: 'home',
-  GRIT: 'grit',
-  OPTIMISM: 'optimism',
-  RESULTS: 'results',
-};
+import { Router } from '@reach/router';
 
 const Wrapper = styled('div')`
   background-color: #fefefe;
@@ -20,7 +14,6 @@ const Wrapper = styled('div')`
 
 class App extends Component {
   state = {
-    page: pages.HOME,
     grit: {},
     optimism: {},
   };
@@ -40,39 +33,27 @@ class App extends Component {
     });
   };
 
-  updatePage = page => () => {
-    this.setState({ page });
-  };
-
   render() {
-    const { page, optimism, grit } = this.state;
+    const { optimism, grit } = this.state;
 
     return (
       <Wrapper>
-        {page === pages.HOME && <Home start={this.updatePage(pages.GRIT)}/>}
-
-        {page === pages.GRIT && (
+        <Router>
+          <Home path="/" />
           <Grit
+            path="grit/*"
             selections={grit}
             addScore={this.addScore('grit')}
-              onAfterFinished={this.updatePage(pages.OPTIMISM)}
+            linkTo="/optimism"
           />
-        )}
-
-        {page === pages.OPTIMISM && (
           <Optimism
+            path="/optimism/*"
             selections={optimism}
             addScore={this.addScore('optimism')}
-            onAfterFinished={this.updatePage(pages.RESULTS)}
+            linkTo="/results"
           />
-        )}
-
-        {page === pages.RESULTS && (
-          <Results
-            grit={grit}
-            optimism={optimism}
-          />
-        )}
+          <Results path="/results" grit={grit} optimism={optimism} />
+        </Router>
       </Wrapper>
     );
   }

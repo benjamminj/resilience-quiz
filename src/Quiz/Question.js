@@ -32,7 +32,7 @@ export const Question = ({
   selection,
 }) => (
   <QuestionCard
-    isVisible={isVisible}
+    isVisible
     data-testid={isVisible ? 'visible' : null}
   >
     <CardContent>

@@ -1,14 +1,10 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import { Link } from '@reach/router';
 
-export const Home = ({ start }) => (
+export const Home = () => (
   <>
     <h1>Welcome to Resilience.</h1>
 
-    <button onClick={start}>Get started</button>
+    <Link to="/grit">Get started</Link>
   </>
 );
-
-Home.propTypes = {
-  start: PropTypes.func.isRequired,
-};

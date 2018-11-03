@@ -5,6 +5,7 @@ import { Header } from '../Header/Header';
 import { Container } from '../Container';
 import styled from 'react-emotion';
 import { headerHeight, colors } from '../styles';
+import { navigate } from '@reach/router';
 
 const QuizContainer = styled(Container)`
   background: ${({ background }) => background};
@@ -29,47 +30,48 @@ export class Quiz extends Component {
   };
 
   handleInputChange = value => {
-    const { answers, addScore, questions } = this.props;
-    const { index } = this.state;
+    const { answers, addScore, questions, currentId } = this.props;
 
-    const current = questions[index];
+    const current = questions[currentId];
 
     addScore(current, answers.length, value);
-    this.gotoNext();
+
+    const nextId = Number(currentId) + 1;
+    const nextRoute = nextId < questions.length ? nextId : 'review';
+
+    navigate(nextRoute);
   };
 
   render() {
     const {
+      currentId,
       accent,
       name,
       background,
       answers,
       questions,
-      review,
       selections,
     } = this.props;
-    const { index } = this.state;
+
+    const index = currentId;
+    const { scoring, question, id } = questions[index] || {};
 
     return (
       <div>
         <Header back={index !== 0 ? this.gotoPrevious : null}>{name}</Header>
 
         <QuizContainer background={background}>
-          {questions.map(({ id, question, scoring }, i) => (
-            <Question
-              color={accent}
-              selection={selections[id]}
-              answers={answers}
-              question={question}
-              scoring={scoring}
-              key={i}
-              id={`question-${id}`}
-              handleInputChange={this.handleInputChange}
-              isVisible={index === i}
-            />
-          ))}
-
-          {index >= questions.length && review}
+          <Question
+            color={accent}
+            selection={selections[id]}
+            answers={answers}
+            question={question}
+            scoring={scoring}
+            key={id}
+            id={`question-${id}`}
+            handleInputChange={this.handleInputChange}
+            isVisible={index === id}
+          />
         </QuizContainer>
       </div>
     );
