@@ -6,7 +6,12 @@ import { REVERSE_SCORING } from './constants';
 import { Results } from './Results/Results';
 import { Home } from './Home';
 import { PosedRouter } from './PosedRouter';
-import { Index, Review, GritQuiz } from './Grit';
+import { Intro, Review, GritQuiz } from './Grit';
+import {
+  Intro as OptimismIntro,
+  Review as OptimismReview,
+  OptimismQuiz,
+} from './Optimism';
 
 const Wrapper = styled('div')`
   background-color: #fefefe;
@@ -46,7 +51,7 @@ class App extends Component {
             * Reach router has a bug with transitions & nested routes where it double-mounts
             * nested routes. This resuls in some weird behavior, especially when animating.
             */}
-          <Index path="/grit" />
+          <Intro path="/grit" />
           <GritQuiz
             path="/grit/:currentId"
             selections={grit}
@@ -54,13 +59,14 @@ class App extends Component {
           />
           <Review path="/grit/review" linkTo="/optimism" />
 
-            
-          <Optimism
-            path="/optimism/*"
+          <OptimismIntro path="/optimism" />
+          <OptimismQuiz
+            path="/optimism/:currentId"
             selections={optimism}
             addScore={this.addScore('optimism')}
-            linkTo="/results"
           />
+          <OptimismReview path="optimism/review" linkTo="/results" />
+
           <Results path="/results" grit={grit} optimism={optimism} />
         </PosedRouter>
       </Wrapper>

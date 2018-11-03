@@ -8,7 +8,7 @@ import { Link } from '@reach/router';
 import { PosedRouter } from '../PosedRouter';
 import posed from 'react-pose';
 
-export const Index = () => (
+export const Intro = () => (
   <div>
     <h1>Intro to grit</h1>
     <Link to="0">start</Link>
