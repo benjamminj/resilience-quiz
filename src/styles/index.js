@@ -7,10 +7,12 @@ export const colors = {
   greyMedium: '#999',
   greyDark: '#666',
   // TODO -- palette
-  primaryLight: '',
+  primaryLight: '#c8efec',
   primary: 'lightseagreen',
   primaryDark: '',
   secondaryLight: '',
   secondary: 'salmon',
   secondaryDark: '',
 }
+
+export const headerHeight = '60px';

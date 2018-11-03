@@ -16,7 +16,7 @@ const pages = {
 const Wrapper = styled('div')`
   background-color: #fefefe;
   min-height: 100vh;
-`
+`;
 
 class App extends Component {
   state = {
@@ -66,7 +66,7 @@ class App extends Component {
 
         {page === pages.RESULTS && <Results />}
 
-        {page === pages.HOME ? (
+        {page === pages.HOME && (
           <div className={styles.links}>
             {Object.values(pages)
               .filter(pageName => pageName !== page)
@@ -81,13 +81,6 @@ class App extends Component {
                 </button>
               ))}
           </div>
-        ) : (
-          <button
-            className={styles.homeButton}
-            onClick={this.updatePage(pages.HOME)}
-          >
-            Go home
-          </button>
         )}
       </Wrapper>
     );
