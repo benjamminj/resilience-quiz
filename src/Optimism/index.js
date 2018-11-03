@@ -1,11 +1,9 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { questions as questionsData, answers as answersData } from './data';
 import { Quiz } from '../Quiz';
 import { Emoji } from '../Emoji';
 import { colors } from '../styles';
 import { Link } from '@reach/router';
-import { PosedRouter } from '../PosedRouter';
 
 export const Intro = () => (
   <div>

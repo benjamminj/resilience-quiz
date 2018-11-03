@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import styled from 'react-emotion';
 // import { Grit } from './Grit';
-import { Optimism } from './Optimism';
+import { Header } from './Header';
 import { REVERSE_SCORING } from './constants';
 import { Results } from './Results/Results';
 import { Home } from './Home';
@@ -12,6 +12,7 @@ import {
   Review as OptimismReview,
   OptimismQuiz,
 } from './Optimism';
+import { Match } from '@reach/router';
 
 const Wrapper = styled('div')`
   background-color: #fefefe;

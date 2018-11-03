@@ -3,8 +3,15 @@ import PropTypes from 'prop-types';
 import styled from 'react-emotion';
 import { colors, headerHeight } from '../styles';
 import { ReactComponent as ArrowIcon } from '../icons/arrow-left.svg';
+import posed from 'react-pose';
 
-const StyledHeader = styled('header')`
+const PosedHeader = posed.header({
+  init: { opacity: 1 },
+  enter: { opacity: 1 },
+  exit: { opacity: 0 },
+})
+
+const StyledHeader = styled(PosedHeader)`
   background: ${colors.white};
   border-bottom: 1px solid ${colors.greyLight};
   padding: 1rem;
@@ -15,7 +22,7 @@ const StyledHeader = styled('header')`
   position: fixed;
   top: 0;
   left: 0;
-  right: 0;
+  width: 100vw;
 `;
 
 const SrOnly = styled('span')`
