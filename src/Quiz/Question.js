@@ -51,7 +51,7 @@ export const Question = ({
   handleInputChange,
   selection,
 }) => (
-  <QuestionCard isVisible={isVisible}>
+  <QuestionCard isVisible={isVisible} data-testid={isVisible ? 'visible' : null}>
     <CardContent>
       <h2>{question}</h2>
       <List>

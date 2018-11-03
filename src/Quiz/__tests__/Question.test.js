@@ -1,6 +1,7 @@
 import React from 'react';
 import { render, fireEvent } from 'react-testing-library';
 import { Question } from '../Question';
+import { DEFAULT_SCORING } from '../../constants';
 
 const props = {
   id: 'test',
@@ -8,12 +9,13 @@ const props = {
   answers: ['nope', 'meh', 'maybe', 'kinda', 'yep'],
   handleInputChange: () => {},
   isVisible: false,
+  scoring: DEFAULT_SCORING
 };
 
 describe('<Question />', () => {
   test('applies visible class', () => {
-    const { container } = render(<Question {...props} isVisible={true} />);
-    expect(container.querySelector('.isVisible')).not.toBeNull();
+    const { getByTestId } = render(<Question {...props} isVisible={true} />);
+    expect(getByTestId('visible')).not.toBeNull();
   });
 
   test('calls callback with button value when answer is chosen', () => {
