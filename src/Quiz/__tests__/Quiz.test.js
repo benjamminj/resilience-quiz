@@ -23,56 +23,17 @@ const props = {
 
 describe('<Quiz />', () => {
   test('should render the first question', () => {
-    const { getByTestId } = render(<Quiz {...props} />);
-    expect(getByTestId('visible')).toContainHTML(
-      'Is this the first?'
-    );
+    const { getByText } = render(<Quiz {...props} />);
+    expect(getByText('Is this the first?')).toBeInTheDocument();
   });
 
-  test('should advance each slide until the review slide', () => {
-    const { getByText, getByTestId, queryByTestId } = render(<Quiz {...props} />);
-
-    fireEvent.click(getByText('nope'));
-    expect(getByTestId('visible')).toContainHTML(
-      'Is this the second?'
-    );
-
-    fireEvent.click(getByText('meh'));
-
-    expect(getByTestId('visible')).toContainHTML(
-      'Is this the third?'
-    );
-
-    fireEvent.click(getByText('yarp'));
-    
-    expect(getByTestId('visible')).toContainHTML(
-      'Is this the fourth?'
-    );
-
-    fireEvent.click(getByText('ok'));
-
-    expect(queryByTestId('visible')).toBeNull();
-    expect(getByText('Review page mock')).toBeInTheDocument();
-  });
+  test('should render whichever question is in route param', () => {
+    const { getByText } = render(<Quiz {...props} currentId={3} />);
+    expect(getByText('Is this the fourth?')).toBeInTheDocument();
+  })
 
   test('should not show back option if first slide', () => {
     const { queryByText } = render(<Quiz {...props} />);
     expect(queryByText('Back')).toBeNull();
-  });
-
-  test('should go back 1 slide until first slide', () => {
-    const { getByText, getByTestId } = render(<Quiz {...props} />);
-
-    fireEvent.click(getByText('ok'));
-    fireEvent.click(getByText('ok'));
-    fireEvent.click(getByText('ok'));
-
-    fireEvent.click(getByText('Back'));
-    fireEvent.click(getByText('Back'));
-    fireEvent.click(getByText('Back'));
-
-    expect(getByTestId('visible')).toContainHTML(
-      'Is this the first?'
-    );
   });
 });

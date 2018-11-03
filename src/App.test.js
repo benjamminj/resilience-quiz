@@ -7,10 +7,4 @@ describe('<App />', () => {
     const { getByText } = render(<App />)
     expect(getByText('Welcome to Resilience.')).toBeInTheDocument();
   });
-
-  test('clicking CTA routes to grit quiz', () => {
-    const { getByText } = render(<App />);
-    fireEvent.click(getByText('Get started'))
-    expect(getByText('Grit')).toBeInTheDocument();
-  });
 });
