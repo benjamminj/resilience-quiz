@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import styled from 'react-emotion';
-import { Grit } from './Grit';
+// import { Grit } from './Grit';
 import { Optimism } from './Optimism';
 import { REVERSE_SCORING } from './constants';
 import { Results } from './Results/Results';
 import { Home } from './Home';
-import { Router } from '@reach/router';
+import { PosedRouter } from './PosedRouter';
+import { Index, Review, GritQuiz } from './Grit';
 
 const Wrapper = styled('div')`
   background-color: #fefefe;
@@ -38,14 +39,22 @@ class App extends Component {
 
     return (
       <Wrapper>
-        <Router>
+        <PosedRouter>
           <Home path="/" />
-          <Grit
-            path="grit/*"
+
+          {/*
+            * Reach router has a bug with transitions & nested routes where it double-mounts
+            * nested routes. This resuls in some weird behavior, especially when animating.
+            */}
+          <Index path="/grit" />
+          <GritQuiz
+            path="/grit/:currentId"
             selections={grit}
             addScore={this.addScore('grit')}
-            linkTo="/optimism"
           />
+          <Review path="/grit/review" linkTo="/optimism" />
+
+            
           <Optimism
             path="/optimism/*"
             selections={optimism}
@@ -53,7 +62,7 @@ class App extends Component {
             linkTo="/results"
           />
           <Results path="/results" grit={grit} optimism={optimism} />
-        </Router>
+        </PosedRouter>
       </Wrapper>
     );
   }

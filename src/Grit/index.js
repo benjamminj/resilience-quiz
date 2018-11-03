@@ -4,17 +4,18 @@ import { questions as questionsData, answers as answersData } from './data';
 import { Quiz } from '../Quiz';
 import { Emoji } from '../Emoji';
 import { colors } from '../styles';
-import {  Link } from '@reach/router';
+import { Link } from '@reach/router';
 import { PosedRouter } from '../PosedRouter';
+import posed from 'react-pose';
 
-const Index = () => (
+export const Index = () => (
   <div>
     <h1>Intro to grit</h1>
     <Link to="0">start</Link>
   </div>
 );
 
-const Review = ({ linkTo }) => (
+export const Review = ({ linkTo }) => (
   <div>
     <h2>
       We finished grit! <Emoji icon="🎉" label="confetti" />
@@ -33,28 +34,14 @@ const Review = ({ linkTo }) => (
   </div>
 );
 
-export const Grit = props => {
-  return (
-    <PosedRouter>
-      <Index path="/" />
-      <Quiz
-        {...props}
-        path="/:currentId"
-        name="Grit"
-        accent={colors.primary.dark}
-      />
-      <Review linkTo={props.linkTo} path="review" />
-    </PosedRouter>
-  );
-};
+export const GritQuiz = props => (
+  <Quiz
+    {...props}
+    questions={questionsData}
+    answers={answersData}
+    path="/:currentId"
+    name="Grit"
+    accent={colors.primary.dark}
+  />
+);
 
-Grit.propTypes = {
-  linkTo: PropTypes.string.isRequired,
-  questions: PropTypes.array,
-  answers: PropTypes.arrayOf(PropTypes.string),
-};
-
-Grit.defaultProps = {
-  questions: questionsData,
-  answers: answersData,
-};
