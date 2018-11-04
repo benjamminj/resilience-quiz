@@ -4,6 +4,7 @@ import styled, { css } from 'react-emotion';
 import { colors } from '../styles';
 import { rgba } from 'polished';
 
+// TODO -- abstract out a button component
 const Button = styled('button')`
   color: ${colors.greyDark};
   border-width: 2px;

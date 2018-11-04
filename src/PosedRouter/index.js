@@ -4,11 +4,11 @@ import { Router, Location } from '@reach/router';
 
 const RouteContainer = posed.div({
   init: { opacity: 0 },
-  enter: { opacity: 1, transition: { duration: 300 }, beforeChildren: 500 },
+  enter: { opacity: 1, transition: { duration: 300 }, beforeChildren: 0 },
   exit: {
     opacity: 0,
     afterChildren: 500,
-    transition: { duration: 300 }
+    transition: { duration: 700 }
   },
 });
 

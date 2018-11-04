@@ -11,9 +11,9 @@ import { Answer } from './Answer';
 import posed from 'react-pose';
 
 const QuizTransition = posed.div({
-  init: { x: '100%', opacity: 1 },
-  enter: { x: 0, opacity: 1, transition: { duration: 500 } },
-  exit: { x: '-100%', opacity: 1, transition: { duration: 500 } },
+  init: { x: '100%', },
+  enter: { x: 0, transition: { duration: 700 } },
+  exit: { x: '-100%', transition: { duration: 700 } },
 });
 
 const QuizContainer = styled('div')`
