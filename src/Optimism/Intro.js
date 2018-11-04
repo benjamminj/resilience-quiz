@@ -6,16 +6,15 @@ import { rgba } from 'polished';
 import { Container } from '../Container';
 import { colors } from '../styles';
 import { Fade } from '../Fade';
+import { PageLayout } from '../PageLayout';
 
-const IntroLayout = styled('div')`
+const IntroLayout = styled(PageLayout)`
   padding: 1rem;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  min-height: 100vh;
   text-align: center;
-  background: ${colors.secondary.light};
 `;
 
 const Cta = styled(Link)`
@@ -40,18 +39,16 @@ const H3 = styled('h3')`
 `;
 
 export const Intro = ({ linkTo }) => (
-  <Fade>
-    <IntroLayout>
-      <Container>
-        <H2>
-          Thanks <Emoji icon="🎉" label="confetti" />
-        </H2>
-        <H3>
-          Now that we've gotten the details on how much grit you have, only a few
-          more to go.
-        </H3>
-        <Cta to={linkTo}>Ok, let's do this!</Cta>
-      </Container>
-    </IntroLayout>
-  </Fade>
+  <IntroLayout background={colors.secondary.light} transition={Fade}>
+    <Container>
+      <H2>
+        Thanks <Emoji icon="🎉" label="confetti" />
+      </H2>
+      <H3>
+        Now that we've gotten the details on how much grit you have, only a few
+        more to go.
+      </H3>
+      <Cta to={linkTo}>Ok, let's do this!</Cta>
+    </Container>
+  </IntroLayout>
 );

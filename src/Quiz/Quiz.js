@@ -133,7 +133,7 @@ export class Quiz extends Component {
     return (
       <div>
         <Header>{name}</Header>
-        <Slide initialPose="init">
+        <Slide>
           <QuizContainer>
             <QuizBackground background={background}>
               <QuizLayout>

@@ -3,16 +3,15 @@ import { Link } from '@reach/router';
 import styled from 'react-emotion';
 import { Container } from '../Container';
 import { colors } from '../styles';
+import { PageLayout } from '../PageLayout';
+import { Fade } from '../Fade';
 
-const HomeWrapper = styled('div')`
-  padding: 1rem;
+const HomeLayout = styled(PageLayout)`
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  min-height: 100vh;
   text-align: center;
-  background: ${colors.primary.light};
 `;
 
 const Cta = styled(Link)`
@@ -27,12 +26,12 @@ const Cta = styled(Link)`
   &:hover {
     cursor: pointer;
   }
-`
+`;
 
 export const Home = () => (
-  <HomeWrapper>
+  <HomeLayout background={colors.primary.light} transition={Fade}>
     <h1>Resilience.</h1>
 
     <Cta to="/grit/0">Get started</Cta>
-  </HomeWrapper>
+  </HomeLayout>
 );
