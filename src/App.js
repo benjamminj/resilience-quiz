@@ -69,7 +69,13 @@ class App extends Component {
             linkTo="/results"
           />
 
-          <Results path="/results" grit={grit} optimism={optimism} />
+          <Results 
+            path="/results" 
+            grit={grit} 
+            optimism={optimism} 
+            gritPossible={25} // TODO
+            optimismPossible={25} 
+          />
 
         </PosedRouter>
       </Wrapper>

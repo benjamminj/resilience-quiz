@@ -5,6 +5,6 @@ import App from './App';
 describe('<App />', () => {
   test('renders home page by default', () => {
     const { getByText } = render(<App />)
-    expect(getByText('Welcome to Resilience.')).toBeInTheDocument();
+    expect(getByText('Resilience.')).toBeInTheDocument();
   });
 });

@@ -29,23 +29,57 @@ const QuizBackground = styled('div')`
   padding: 1rem;
   min-height: calc(100vh - ${headerHeight});
   background: ${props => props.background};
-  
 
   ${above.md(css`
     min-height: 100vh;
+    display: flex;
+    align-items: center;
   `)};
 `;
 
 const QuizLayout = styled(Container)`
   /* TODO -- check on Safari & use flex fallback if necessary */
-  display: grid;
-  grid-template-rows: auto 1fr auto;
+  display: flex;
+  flex-direction: column;
   align-items: center;
   text-align: center;
-`
+
+  ${above.md(css`
+    display: flex;
+    flex-direction: row;
+    /* grid-template-rows: 1fr auto auto 1fr 1fr; */
+    /* grid-template-columns: 1fr 1fr; */
+    /* grid-column-gap: 4rem; */
+  `)};
+`;
+
+const DesktopOnlyHeader = styled('h1')`
+  display: none;
+  font-size: 1.5rem;
+
+  ${above.md(css`
+    display: block;
+    order: -1;
+  `)};
+`;
+
+const QuestionSection = styled('div')`
+  display: flex;
+  flex-direction: column;
+
+  ${above.md(css`
+    margin-right: 4rem;
+    width: 50%;
+  `)}
+`;
 
 const Question = styled('h2')`
   font-size: 2rem;
+
+  ${above.md(css`
+    text-align: left;
+    font-size: 2.25rem;
+  `)};
 `;
 
 const QuestionNumber = styled('h3')`
@@ -53,13 +87,24 @@ const QuestionNumber = styled('h3')`
    * Keep the h3 below the h2 for SEO / a11y purposes,
    * but make it appear "above" the h2
    */
-  grid-row: 1;
+  order: -1;
   margin: 0;
+  font-weight: normal;
+
+  ${above.md(css`
+    order: -1;
+  `)};
 `;
 
 const AnswersList = styled('ul')`
   display: flex;
   flex-direction: column;
+  margin: 0;
+  width: 100%;
+
+  ${above.md(css`
+    width: 50%;
+  `)}
 `;
 
 export class Quiz extends Component {
@@ -102,10 +147,13 @@ export class Quiz extends Component {
           <QuizContainer>
             <QuizBackground background={background}>
               <QuizLayout>
-                <Question>{question}</Question>
-                <QuestionNumber>
-                  {index + 1} of {questions.length}
-                </QuestionNumber>
+                <QuestionSection>
+                  <DesktopOnlyHeader>{name}</DesktopOnlyHeader>
+                  <Question>{question}</Question>
+                  <QuestionNumber>
+                    {index + 1} of {questions.length}
+                  </QuestionNumber>
+                </QuestionSection>
 
                 <AnswersList>
                   {answers.map((choice, i) => (

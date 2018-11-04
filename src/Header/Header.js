@@ -56,8 +56,8 @@ const ChildSpacer = styled('div')`
   text-align: center;
 `;
 
-export const Header = ({ back, children }) => (
-  <StyledHeader>
+export const Header = ({ back, children, ...props }) => (
+  <StyledHeader {...props}>
     {back && (
       <div>
         <BackButton type="button" onClick={back}>
