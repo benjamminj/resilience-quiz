@@ -1,13 +1,11 @@
 import React, { Component } from 'react';
 import styled from 'react-emotion';
-// import { Grit } from './Grit';
-import { Header } from './Header';
 import { REVERSE_SCORING } from './constants';
 import { Results } from './Results/Results';
 import { Home } from './Home';
 import { PosedRouter } from './PosedRouter';
 import { Redirect } from '@reach/router';
-import { Review, GritQuiz } from './Grit';
+import { GritQuiz } from './Grit';
 import {
   Intro as OptimismIntro,
   OptimismQuiz,
@@ -60,10 +58,10 @@ class App extends Component {
             addScore={this.addScore('grit')}
             linkTo="/optimism"
           />
-
+          {/* Index path for grit quiz routes to first quiz question */}
+          <Redirect from="grit" to="grit/0" noThrow />
 
           <OptimismIntro path="optimism" linkTo="/optimism/0" />
-
           <OptimismQuiz
             path="/optimism/:currentId"
             selections={optimism}
@@ -73,9 +71,6 @@ class App extends Component {
 
           <Results path="/results" grit={grit} optimism={optimism} />
 
-          {/* REDIRECTS - Index path for each quiz routes to first quiz question */}
-          <Redirect from="grit" to="grit/0" noThrow />
-          {/* <Redirect from="optimism" to="optimism/0" noThrow /> */}
         </PosedRouter>
       </Wrapper>
     );
