@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled, { css } from 'react-emotion';
-import { colors } from '../styles';
+import { colors, above } from '../styles';
 import { rgba } from 'polished';
 
 // TODO -- abstract out a button component

@@ -28,7 +28,7 @@ const H4 = styled('h4')`
   margin: 0 0 1rem;
 `;
 
-const ResultsContainer = styled(Container)`
+const ResultsBackground = styled('div')`
   background: ${colors.primary.light};
   padding-top: calc(${headerHeight} + 1rem);
   min-height: 100vh;
@@ -55,32 +55,34 @@ export const Results = ({ grit, optimism }) => {
       <Header>
         <H1>Results</H1>
       </Header>
-      <ResultsContainer>
-        <H2>FPO TOTAL SECTION</H2>
+      <ResultsBackground>
+        <Container>
+          <H2>FPO TOTAL SECTION</H2>
 
-        <ResultsCard>
-          <CardContent>
-            <CardHeader>
-              <H3>Grit</H3>
-              <H4>{gritScore} / 25</H4>
-            </CardHeader>
+          <ResultsCard>
+            <CardContent>
+              <CardHeader>
+                <H3>Grit</H3>
+                <H4>{gritScore} / 25</H4>
+              </CardHeader>
 
-            <ProgressBar progress={gritScore * 4} />
-          </CardContent>
-        </ResultsCard>
-        <ResultsCard>
-          <CardContent>
-            <CardHeader>
-              <H3>Optimism</H3>
-              <H4>{optimismScore} / 25</H4>
-            </CardHeader>
-            <ProgressBar
-              progress={optimismScore * 4}
-              color={colors.secondary.main}
-            />
-          </CardContent>
-        </ResultsCard>
-      </ResultsContainer>
+              <ProgressBar progress={gritScore * 4} />
+            </CardContent>
+          </ResultsCard>
+          <ResultsCard>
+            <CardContent>
+              <CardHeader>
+                <H3>Optimism</H3>
+                <H4>{optimismScore} / 25</H4>
+              </CardHeader>
+              <ProgressBar
+                progress={optimismScore * 4}
+                color={colors.secondary.main}
+              />
+            </CardContent>
+          </ResultsCard>
+        </Container>
+      </ResultsBackground>
     </div>
   );
 };

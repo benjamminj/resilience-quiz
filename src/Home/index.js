@@ -4,7 +4,8 @@ import styled from 'react-emotion';
 import { Container } from '../Container';
 import { colors } from '../styles';
 
-const HomeWrapper = styled(Container)`
+const HomeWrapper = styled('div')`
+  padding: 1rem;
   display: flex;
   flex-direction: column;
   align-items: center;

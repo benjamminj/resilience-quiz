@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled from 'react-emotion';
-import { colors, headerHeight } from '../styles';
+import styled, { css } from 'react-emotion';
+import { above, colors, headerHeight } from '../styles';
 import { ReactComponent as ArrowIcon } from '../icons/arrow-left.svg';
 import posed from 'react-pose';
 import { rgba } from 'polished';
@@ -26,6 +26,10 @@ const StyledHeader = styled(PosedHeader)`
   left: 0;
   width: 100vw;
   z-index: 1;
+
+  ${above.md(css`
+    display: none;
+  `)};
 `;
 
 const SrOnly = styled('span')`
@@ -45,6 +49,7 @@ const BackButton = styled('button')`
   margin-right: 0.5rem;
   text-align: left;
 `;
+
 // grid column 2
 const ChildSpacer = styled('div')`
   grid-column: 2 / 3;

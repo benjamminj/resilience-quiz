@@ -6,8 +6,8 @@ import { rgba } from 'polished';
 import { Container } from '../Container';
 import { colors } from '../styles';
 
-// TODO -- move into optimism folder
-const IntroLayout = styled(Container)`
+const IntroLayout = styled('div')`
+  padding: 1rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -40,13 +40,15 @@ const H3 = styled('h3')`
 
 export const Intro = ({ linkTo }) => (
   <IntroLayout>
-    <H2>
-      Thanks <Emoji icon="🎉" label="confetti" />
-    </H2>
-    <H3>
-      Now that we've gotten the details on how much grit you have, only a few
-      more to go.
-    </H3>
-    <Cta to={linkTo}>Ok, let's do this!</Cta>
+    <Container>
+      <H2>
+        Thanks <Emoji icon="🎉" label="confetti" />
+      </H2>
+      <H3>
+        Now that we've gotten the details on how much grit you have, only a few
+        more to go.
+      </H3>
+      <Cta to={linkTo}>Ok, let's do this!</Cta>
+    </Container>
   </IntroLayout>
 );

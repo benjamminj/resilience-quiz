@@ -4,14 +4,14 @@ import PropTypes from 'prop-types';
 import { REVERSE_SCORING } from '../constants';
 import { Header } from '../Header/Header';
 import { Container } from '../Container';
-import styled from 'react-emotion';
-import { headerHeight, colors } from '../styles';
+import styled, { css } from 'react-emotion';
+import { above, headerHeight, colors } from '../styles';
 import { navigate } from '@reach/router';
 import { Answer } from './Answer';
 import posed from 'react-pose';
 
 const QuizTransition = posed.div({
-  init: { x: '100%', },
+  init: { x: '100%' },
   enter: { x: 0, transition: { duration: 700 } },
   exit: { x: '-100%', transition: { duration: 700 } },
 });
@@ -19,17 +19,30 @@ const QuizTransition = posed.div({
 const QuizContainer = styled('div')`
   padding-top: ${headerHeight};
   min-height: 100vh;
+
+  ${above.md(css`
+    padding-top: 0;
+  `)};
 `;
 
-const QuizBackground = styled(Container)`
+const QuizBackground = styled('div')`
+  padding: 1rem;
   min-height: calc(100vh - ${headerHeight});
-  background: ${({ background }) => background};
+  background: ${props => props.background};
+  
+
+  ${above.md(css`
+    min-height: 100vh;
+  `)};
+`;
+
+const QuizLayout = styled(Container)`
   /* TODO -- check on Safari & use flex fallback if necessary */
   display: grid;
   grid-template-rows: auto 1fr auto;
   align-items: center;
   text-align: center;
-`;
+`
 
 const Question = styled('h2')`
   font-size: 2rem;
@@ -82,36 +95,37 @@ export class Quiz extends Component {
     const { scoring, question, id } = questions[index] || {};
     const answer = selections[id];
 
-    console.log('RENDERS', currentId);
     return (
       <div>
         <Header>{name}</Header>
         <QuizTransition initialPose="init">
           <QuizContainer>
             <QuizBackground background={background}>
-              <Question>{question}</Question>
-              <QuestionNumber>
-                {index + 1} of {questions.length}
-              </QuestionNumber>
+              <QuizLayout>
+                <Question>{question}</Question>
+                <QuestionNumber>
+                  {index + 1} of {questions.length}
+                </QuestionNumber>
 
-              <AnswersList>
-                {answers.map((choice, i) => (
-                  <li key={i}>
-                    <Answer
-                      color={accent}
-                      active={
-                        // TODO -- clean up
-                        scoring === REVERSE_SCORING
-                          ? answers.length - answer === i
-                          : answer === i + 1
-                      }
-                      onClick={() => this.handleInputChange(i + 1)}
-                    >
-                      {choice}
-                    </Answer>
-                  </li>
-                ))}
-              </AnswersList>
+                <AnswersList>
+                  {answers.map((choice, i) => (
+                    <li key={i}>
+                      <Answer
+                        color={accent}
+                        active={
+                          // TODO -- clean up
+                          scoring === REVERSE_SCORING
+                            ? answers.length - answer === i
+                            : answer === i + 1
+                        }
+                        onClick={() => this.handleInputChange(i + 1)}
+                      >
+                        {choice}
+                      </Answer>
+                    </li>
+                  ))}
+                </AnswersList>
+              </QuizLayout>
             </QuizBackground>
           </QuizContainer>
         </QuizTransition>
