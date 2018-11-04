@@ -35,6 +35,10 @@ const Button = styled('button')`
     border-color: ${props => props.color};
     color: ${colors.white};
   }
+
+  &:hover {
+    cursor: pointer;
+  }
 `;
 
 export const Answer = ({ children, color, active, onClick }) => (

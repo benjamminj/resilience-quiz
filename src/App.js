@@ -7,13 +7,11 @@ import { Results } from './Results/Results';
 import { Home } from './Home';
 import { PosedRouter } from './PosedRouter';
 import { Redirect } from '@reach/router';
-import { Intro, Review, GritQuiz } from './Grit';
+import { Review, GritQuiz } from './Grit';
 import {
   Intro as OptimismIntro,
-  Review as OptimismReview,
   OptimismQuiz,
 } from './Optimism';
-import { Match } from '@reach/router';
 
 const Wrapper = styled('div')`
   background-color: #fefefe;
@@ -64,7 +62,7 @@ class App extends Component {
           />
 
 
-          <Review path="optimism" linkTo="/optimism/0" />
+          <OptimismIntro path="optimism" linkTo="/optimism/0" />
 
           <OptimismQuiz
             path="/optimism/:currentId"
