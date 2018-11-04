@@ -4,6 +4,7 @@ import styled from 'react-emotion';
 import { colors, headerHeight } from '../styles';
 import { ReactComponent as ArrowIcon } from '../icons/arrow-left.svg';
 import posed from 'react-pose';
+import { rgba } from 'polished';
 
 const PosedHeader = posed.header({
   init: { opacity: 1 },
@@ -14,6 +15,7 @@ const PosedHeader = posed.header({
 const StyledHeader = styled(PosedHeader)`
   background: ${colors.white};
   border-bottom: 1px solid ${colors.greyLight};
+  box-shadow: 0 2px 10px ${rgba('#000', 0.15)};
   padding: 1rem;
   height: ${headerHeight};
   display: grid;
@@ -23,6 +25,7 @@ const StyledHeader = styled(PosedHeader)`
   top: 0;
   left: 0;
   width: 100vw;
+  z-index: 1;
 `;
 
 const SrOnly = styled('span')`
