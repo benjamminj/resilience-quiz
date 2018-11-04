@@ -6,7 +6,7 @@ import { Card, CardContent } from '../Card';
 import { above, colors, headerHeight } from '../styles';
 import { ProgressBar } from '../ProgressBar';
 import { rgba } from 'polished';
-import { ReactComponent as CircleSvg } from './circle.svg'
+import { Fade } from '../Fade';
 
 const H1 = styled('h1')`
   font-size: 1rem;
@@ -32,8 +32,12 @@ const H4 = styled('h4')`
 
 const ResultsBackground = styled('div')`
   background: ${colors.primary.light};
-  padding-top: calc(${headerHeight} + 1rem);
+  padding-top: ${headerHeight};
   min-height: 100vh;
+`;
+
+const ResultsContainer = styled(Container)`
+  padding: 1rem;
 `;
 
 const ResultsCard = styled(Card)`
@@ -95,16 +99,15 @@ export const Results = ({ grit, optimism, gritPossible, optimismPossible }) => {
   const totalPossible = gritPossible + optimismPossible;
 
   return (
-    <div>
+    <Fade>
       <Header>
         <H1>Results</H1>
       </Header>
       <ResultsBackground>
-        <Container>
+        <ResultsContainer>
+          <H2>Your Resilience Score</H2>
           <Layout>
             <TotalSection>
-              <H2>Your Resilience Score</H2>
-
               <Circle>
                 <TotalScore>{(totalScore / totalPossible) * 100}%</TotalScore>
               </Circle>
@@ -115,7 +118,7 @@ export const Results = ({ grit, optimism, gritPossible, optimismPossible }) => {
                 <CardContent>
                   <CardHeader>
                     <H3>Your grit score</H3>
-                    <H4>{(gritScore / 25) * 100}%</H4>
+                    <H4>{Math.ceil((gritScore / 25) * 100)}%</H4>
                   </CardHeader>
 
                   <ProgressBar progress={gritScore * 4} />
@@ -125,7 +128,7 @@ export const Results = ({ grit, optimism, gritPossible, optimismPossible }) => {
                 <CardContent>
                   <CardHeader>
                     <H3>Your optimism score</H3>
-                    <H4>{(optimismScore / 25) * 100}%</H4>
+                    <H4>{Math.ceil((optimismScore / 25) * 100)}%</H4>
                   </CardHeader>
                   <ProgressBar
                     progress={optimismScore * 4}
@@ -135,8 +138,8 @@ export const Results = ({ grit, optimism, gritPossible, optimismPossible }) => {
               </ResultsCard>
             </div>
           </Layout>
-        </Container>
+        </ResultsContainer>
       </ResultsBackground>
-    </div>
+    </Fade>
   );
 };

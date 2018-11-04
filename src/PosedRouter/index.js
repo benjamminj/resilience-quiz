@@ -8,7 +8,7 @@ const RouteContainer = posed.div({
   exit: {
     opacity: 0,
     afterChildren: 500,
-    transition: { duration: 700 }
+    transition: { duration: 300 }
   },
 });
 

@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-// import { Question } from './Question';
 import { REVERSE_SCORING } from '../constants';
 import { Header } from '../Header/Header';
 import { Container } from '../Container';
@@ -8,13 +7,7 @@ import styled, { css } from 'react-emotion';
 import { above, headerHeight, colors } from '../styles';
 import { navigate } from '@reach/router';
 import { Answer } from './Answer';
-import posed from 'react-pose';
-
-const QuizTransition = posed.div({
-  init: { x: '100%' },
-  enter: { x: 0, transition: { duration: 700 } },
-  exit: { x: '-100%', transition: { duration: 700 } },
-});
+import { Slide } from '../Slide';
 
 const QuizContainer = styled('div')`
   padding-top: ${headerHeight};
@@ -47,9 +40,6 @@ const QuizLayout = styled(Container)`
   ${above.md(css`
     display: flex;
     flex-direction: row;
-    /* grid-template-rows: 1fr auto auto 1fr 1fr; */
-    /* grid-template-columns: 1fr 1fr; */
-    /* grid-column-gap: 4rem; */
   `)};
 `;
 
@@ -70,7 +60,7 @@ const QuestionSection = styled('div')`
   ${above.md(css`
     margin-right: 4rem;
     width: 50%;
-  `)}
+  `)};
 `;
 
 const Question = styled('h2')`
@@ -104,7 +94,7 @@ const AnswersList = styled('ul')`
 
   ${above.md(css`
     width: 50%;
-  `)}
+  `)};
 `;
 
 export class Quiz extends Component {
@@ -143,7 +133,7 @@ export class Quiz extends Component {
     return (
       <div>
         <Header>{name}</Header>
-        <QuizTransition initialPose="init">
+        <Slide initialPose="init">
           <QuizContainer>
             <QuizBackground background={background}>
               <QuizLayout>
@@ -176,7 +166,7 @@ export class Quiz extends Component {
               </QuizLayout>
             </QuizBackground>
           </QuizContainer>
-        </QuizTransition>
+        </Slide>
       </div>
     );
   }
