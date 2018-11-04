@@ -1,8 +1,7 @@
 import React from 'react';
 import { Emoji } from '../Emoji';
-import { Link } from '@reach/router';
+import { ButtonLink } from '../Button';
 import styled from 'react-emotion';
-import { rgba } from 'polished';
 import { Container } from '../Container';
 import { colors } from '../styles';
 import { Fade } from '../Fade';
@@ -17,15 +16,8 @@ const IntroLayout = styled(PageLayout)`
   text-align: center;
 `;
 
-const Cta = styled(Link)`
-  padding: 1rem;
-  background: ${colors.secondary.main};
-  border-radius: 4px;
+const Cta = styled(ButtonLink)`
   color: ${colors.white};
-  text-decoration: none;
-  min-width: 50%;
-  font-weight: bold;
-  box-shadow: 0 2px 4px ${rgba('#000', 0.2)};
 `;
 
 const H2 = styled('h2')`
@@ -48,7 +40,7 @@ export const Intro = ({ linkTo }) => (
         Now that we've gotten the details on how much grit you have, only a few
         more to go.
       </H3>
-      <Cta to={linkTo}>Ok, let's do this!</Cta>
+      <Cta color={colors.secondary.main} to={linkTo}>Ok, let's do this!</Cta>
     </Container>
   </IntroLayout>
 );
