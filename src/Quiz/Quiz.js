@@ -55,14 +55,14 @@ export class Quiz extends Component {
   };
 
   handleInputChange = value => {
-    const { answers, addScore, questions, currentId } = this.props;
+    const { answers, addScore, questions, currentId, linkTo } = this.props;
 
     const current = questions[currentId];
 
     addScore(current, answers.length, value);
 
     const nextId = Number(currentId) + 1;
-    const nextRoute = nextId < questions.length ? nextId : 'review';
+    const nextRoute = nextId < questions.length ? nextId : linkTo;
 
     navigate(nextRoute);
   };
@@ -85,6 +85,7 @@ export class Quiz extends Component {
     console.log('RENDERS', currentId);
     return (
       <div>
+        <Header>{name}</Header>
         <QuizTransition initialPose="init">
           <QuizContainer>
             <QuizBackground background={background}>
