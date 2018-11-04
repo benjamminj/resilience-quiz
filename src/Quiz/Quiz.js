@@ -1,38 +1,24 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { REVERSE_SCORING } from '../constants';
-import { Header } from '../Header/Header';
 import { Container } from '../Container';
 import styled, { css } from 'react-emotion';
-import { above, headerHeight, colors } from '../styles';
+import { above, colors } from '../styles';
 import { navigate } from '@reach/router';
 import { Answer } from './Answer';
 import { Slide } from '../Slide';
+import { PageLayout } from '../PageLayout';
 
-const QuizContainer = styled('div')`
-  padding-top: ${headerHeight};
-  min-height: 100vh;
-
+const QuizPageLayout = styled(PageLayout)`
   ${above.md(css`
-    padding-top: 0;
-  `)};
-`;
-
-const QuizBackground = styled('div')`
-  padding: 1rem;
-  min-height: calc(100vh - ${headerHeight});
-  background: ${props => props.background};
-
-  ${above.md(css`
-    min-height: 100vh;
     display: flex;
     align-items: center;
   `)};
 `;
 
-const QuizLayout = styled(Container)`
-  /* TODO -- check on Safari & use flex fallback if necessary */
+const QuizContainer = styled(Container)`
   display: flex;
+  height: 100%;
   flex-direction: column;
   align-items: center;
   text-align: center;
@@ -56,7 +42,8 @@ const DesktopOnlyHeader = styled('h1')`
 const QuestionSection = styled('div')`
   display: flex;
   flex-direction: column;
-
+  flex-grow: 1;
+  
   ${above.md(css`
     margin-right: 4rem;
     width: 50%;
@@ -65,6 +52,9 @@ const QuestionSection = styled('div')`
 
 const Question = styled('h2')`
   font-size: 2rem;
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
 
   ${above.md(css`
     text-align: left;
@@ -131,43 +121,40 @@ export class Quiz extends Component {
     const answer = selections[id];
 
     return (
-      <div>
-        <Header>{name}</Header>
-        <Slide>
-          <QuizContainer>
-            <QuizBackground background={background}>
-              <QuizLayout>
-                <QuestionSection>
-                  <DesktopOnlyHeader>{name}</DesktopOnlyHeader>
-                  <Question>{question}</Question>
-                  <QuestionNumber>
-                    {index + 1} of {questions.length}
-                  </QuestionNumber>
-                </QuestionSection>
+      <QuizPageLayout
+        header={<h1>{name}</h1>}
+        transition={Slide}
+        background={background}
+      >
+        <QuizContainer>
+          <QuestionSection>
+            <DesktopOnlyHeader>{name}</DesktopOnlyHeader>
+            <Question>{question}</Question>
+            <QuestionNumber>
+              {index + 1} of {questions.length}
+            </QuestionNumber>
+          </QuestionSection>
 
-                <AnswersList>
-                  {answers.map((choice, i) => (
-                    <li key={i}>
-                      <Answer
-                        color={accent}
-                        active={
-                          // TODO -- clean up
-                          scoring === REVERSE_SCORING
-                            ? answers.length - answer === i
-                            : answer === i + 1
-                        }
-                        onClick={() => this.handleInputChange(i + 1)}
-                      >
-                        {choice}
-                      </Answer>
-                    </li>
-                  ))}
-                </AnswersList>
-              </QuizLayout>
-            </QuizBackground>
-          </QuizContainer>
-        </Slide>
-      </div>
+          <AnswersList>
+            {answers.map((choice, i) => (
+              <li key={i}>
+                <Answer
+                  color={accent}
+                  active={
+                    // TODO -- clean up
+                    scoring === REVERSE_SCORING
+                      ? answers.length - answer === i
+                      : answer === i + 1
+                  }
+                  onClick={() => this.handleInputChange(i + 1)}
+                >
+                  {choice}
+                </Answer>
+              </li>
+            ))}
+          </AnswersList>
+        </QuizContainer>
+      </QuizPageLayout>
     );
   }
 }

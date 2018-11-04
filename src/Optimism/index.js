@@ -12,6 +12,6 @@ export const OptimismQuiz = props => (
     answers={answersData}
     name="Optimism"
     background={colors.secondary.light}
-    accent={colors.secondary.main}
+    accent={colors.secondary.dark}
   />
 );

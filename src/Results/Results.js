@@ -1,9 +1,8 @@
 import React from 'react';
 import styled, { css } from 'react-emotion';
-import { Header } from '../Header/Header';
 import { Container } from '../Container';
 import { Card, CardContent } from '../Card';
-import { above, colors, headerHeight } from '../styles';
+import { above, colors } from '../styles';
 import { ProgressBar } from '../ProgressBar';
 import { rgba } from 'polished';
 import { Fade } from '../Fade';
@@ -102,11 +101,16 @@ const DesktopOnlyHeader = styled('header')`
 const getScore = selections =>
   Object.values(selections).reduce((sum, value) => sum + value, 0);
 
+const roundPercent = (number, total) => Math.ceil((number / total) * 100);
+
 export const Results = ({ grit, optimism, gritPossible, optimismPossible }) => {
   const gritScore = getScore(grit);
   const optimismScore = getScore(optimism);
   const totalScore = gritScore + optimismScore;
   const totalPossible = gritPossible + optimismPossible;
+
+  const gritPercent = roundPercent(gritScore, gritPossible);
+  const optimismPercent = roundPercent(optimismScore, optimismPossible);
 
   return (
     <PageLayout
@@ -122,7 +126,9 @@ export const Results = ({ grit, optimism, gritPossible, optimismPossible }) => {
           <TotalSection>
             <H2>Your resilience score</H2>
             <Circle>
-              <TotalScore>{(totalScore / totalPossible) * 100}%</TotalScore>
+              <TotalScore>
+                {roundPercent(totalScore, totalPossible)}%
+              </TotalScore>
             </Circle>
           </TotalSection>
 
@@ -131,20 +137,20 @@ export const Results = ({ grit, optimism, gritPossible, optimismPossible }) => {
               <CardContent>
                 <CardHeader>
                   <H3>Your grit score</H3>
-                  <H4>{Math.ceil((gritScore / 25) * 100)}%</H4>
+                  <H4>{gritPercent}%</H4>
                 </CardHeader>
 
-                <ProgressBar progress={gritScore * 4} />
+                <ProgressBar progress={gritPercent} />
               </CardContent>
             </ResultsCard>
             <ResultsCard>
               <CardContent>
                 <CardHeader>
                   <H3>Your optimism score</H3>
-                  <H4>{Math.ceil((optimismScore / 25) * 100)}%</H4>
+                  <H4>{optimismPercent}%</H4>
                 </CardHeader>
                 <ProgressBar
-                  progress={optimismScore * 4}
+                  progress={optimismPercent}
                   color={colors.secondary.main}
                 />
               </CardContent>

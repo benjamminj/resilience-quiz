@@ -5,13 +5,15 @@ import { headerHeight, colors } from '../styles';
 import { Header } from '../Header/Header';
 
 const ContentWrapper = styled('div')`
-  min-height: 100vh;
+  height: 100vh;
+  overflow-y: scroll;
   background-color: ${props => props.background};
+  padding: 1rem;
 
   ${props =>
     props.header &&
     css`
-      padding: calc(${headerHeight} + 1rem) 1rem 1rem;
+      padding-top: calc(${headerHeight} + 1rem);
     `};
 `;
 
