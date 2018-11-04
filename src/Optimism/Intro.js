@@ -3,7 +3,7 @@ import { Emoji } from '../Emoji';
 import { ButtonLink } from '../Button';
 import styled from 'react-emotion';
 import { Container } from '../Container';
-import { colors } from '../styles';
+import { colors, breakpoints } from '../styles';
 import { Fade } from '../Fade';
 import { PageLayout } from '../PageLayout';
 
@@ -24,22 +24,23 @@ const H2 = styled('h2')`
   font-size: 2rem;
 `;
 
-const H3 = styled('h3')`
+const P = styled('p')`
   font-size: 1.5rem;
   margin: 1em 0;
   font-weight: normal;
+  max-width: ${breakpoints.md};
 `;
 
 export const Intro = ({ linkTo }) => (
   <IntroLayout background={colors.secondary.light} transition={Fade}>
-    <Container>
+    <Container size="sm">
       <H2>
-        Thanks <Emoji icon="🎉" label="confetti" />
+        Awesome! <Emoji icon="🎉" label="confetti" />
       </H2>
-      <H3>
+      <P>
         Now that we've gotten the details on how much grit you have, only a few
         more to go.
-      </H3>
+      </P>
       <Cta color={colors.secondary.main} to={linkTo}>Ok, let's do this!</Cta>
     </Container>
   </IntroLayout>
