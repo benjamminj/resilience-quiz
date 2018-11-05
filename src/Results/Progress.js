@@ -11,10 +11,6 @@ const Circle = styled(ProgressIcon)`
   position: absolute;
   margin: 0 auto;
   top: 0;
-
-  ${above.md(css`
-    margin: 2rem auto;
-  `)};
 `;
 
 const ProgressWrapper = styled('span')`
@@ -25,6 +21,10 @@ const ProgressWrapper = styled('span')`
   height: ${size};
   width: ${size};
   margin: 0 auto;
+
+  ${above.md(css`
+    margin: 2rem auto;
+  `)};
 `;
 
 export const Progress = ({ percent }) => (

@@ -55,6 +55,7 @@ const TotalSection = styled('div')`
 const TotalScore = styled('h3')`
   font-size: 3rem;
   text-align: center;
+  margin: 0;
 `;
 
 const TotalCard = styled(Card)`
