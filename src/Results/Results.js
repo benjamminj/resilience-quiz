@@ -6,7 +6,8 @@ import { above, colors, fonts, fontWeight } from '../styles';
 import { ProgressBar } from '../ProgressBar';
 import { Fade } from '../Fade';
 import { PageLayout } from '../PageLayout';
-import {Progress} from './Progress';
+import { Progress } from './Progress';
+import { Emoji } from '../Emoji';
 
 const H1 = styled('h1')`
   font-size: inherit;
@@ -59,7 +60,11 @@ const TotalScore = styled('h3')`
 const TotalCard = styled(Card)`
   width: 100%;
   margin-bottom: 1rem;
-`
+`;
+
+const P = styled('p')`
+  font-size: 1.25rem;
+`;
 
 const DesktopLayout = styled('div')`
   ${above.md(css`
@@ -105,6 +110,40 @@ export const Results = ({ gritScore, optimismScore, totalScore }) => {
           </TotalSection>
 
           <div>
+            <ResultsCard>
+              <CardContent>
+                {totalScore >= 90 && (
+                  <>
+                    <P>
+                      Wow, your resilience is ahhh-mazing.{' '}
+                      <Emoji icon="👌" label="ok-hand" />
+                    </P>
+                    <P>Keep doing whatever you're doing!</P>
+                  </>
+                )}
+
+                {totalScore < 90 &&
+                  totalScore >= 70 && (
+                    <>
+                      <P>You're doing pretty well on the optimism front</P>
+                      <P>
+                        There's room to improve, but you focus on being the best
+                        version of you <Emoji icon="😎" label="sunglasses" />
+                      </P>
+                    </>
+                  )}
+
+                {totalScore < 70 && (
+                  <>
+                    <P>So...your resilience score wasn't too high.</P>
+                    <P>
+                      It's ok, we can work on it and bring that score up{' '}
+                      <Emoji icon="🤷🏻‍♂️" label="shrug" />
+                    </P>
+                  </>
+                )}
+              </CardContent>
+            </ResultsCard>
             <ResultsCard>
               <CardContent>
                 <CardHeader>

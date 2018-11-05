@@ -25,9 +25,9 @@ export const Button = styled(PosedButton)`
   box-shadow: 0 2px 4px ${rgba('#000', 0.2)};
 
   ${transitions([
-    'background 100ms ease-in',
-    'border-color 100ms ease-in',
-    'color 100ms ease-in',
+    'background 100ms ease-in-out',
+    'border-color 100ms ease-in-out',
+    'color 100ms ease-in-out',
   ])};
 
   ${props =>

@@ -1,22 +1,13 @@
 import React from 'react';
 import styled, { css } from 'react-emotion';
-import { above, colors } from '../styles';
+import { above } from '../styles';
 import { ProgressIcon } from './ProgressIcon';
-// import { ReactComponent as CircleSvg } from './progress.svg';
-import posed from 'react-pose';
 
-const radius = 45;
-const circleX = 50;
-const circleY = 50;
-// in order to make a progress meter, create an "empty space" in the circle
-const dashArray = 2 * Math.PI * radius;
 const size = '15rem';
 
 const Circle = styled(ProgressIcon)`
   width: 100%;
   height: 100%;
-  /* fill: white; */
-  /* transform: rotate(-90deg); */
   position: absolute;
   margin: 0 auto;
   top: 0;

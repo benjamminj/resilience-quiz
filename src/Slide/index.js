@@ -6,6 +6,7 @@ export const Slide = posed.div({
     x: 0, 
     opacity: 1, 
     transition: { 
+      delay: 100,
       duration: 700 
     } 
   },
@@ -14,10 +15,11 @@ export const Slide = posed.div({
     opacity: 0, 
     transition: { 
       x: {
+        delay: 100,
         duration: 700 
       },
       opacity: {
-        delay: 400,
+        delay: 500,
         duration: 300
       }
     } 
