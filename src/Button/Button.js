@@ -1,4 +1,4 @@
-import { colors } from '../styles';
+import { colors, fontWeight } from '../styles';
 import PropTypes from 'prop-types';
 import styled, { css } from 'react-emotion';
 import { rgba, transitions } from 'polished';
@@ -16,7 +16,7 @@ const PosedButton = posed.button(buttonInteractions);
 
 export const Button = styled(PosedButton)`
   padding: 1rem;
-  font-weight: bold;
+  font-weight: ${fontWeight.bold};
   background: ${props => props.color};
   border-color: ${props => props.color};
   border-style: solid;

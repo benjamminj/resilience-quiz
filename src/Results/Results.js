@@ -2,7 +2,7 @@ import React from 'react';
 import styled, { css } from 'react-emotion';
 import { Container } from '../Container';
 import { Card, CardContent } from '../Card';
-import { above, colors } from '../styles';
+import { above, colors, fonts, fontWeight } from '../styles';
 import { ProgressBar } from '../ProgressBar';
 import { rgba } from 'polished';
 import { Fade } from '../Fade';
@@ -11,14 +11,14 @@ import { PageLayout } from '../PageLayout';
 const H1 = styled('h1')`
   font-size: inherit;
   margin: 0;
-  font-weight: bold;
+  font-weight: ${fontWeight.bold};
   display: block;
 `;
 
 const H2 = styled('h2')`
   margin: 0.5rem 0;
   font-size: 1.5rem;
-  font-weight: bold;
+  font-weight: ${fontWeight.bold};
   text-align: center;
 `;
 
@@ -30,12 +30,8 @@ const H4 = styled('h4')`
   margin: 0 0 1rem 0.5rem;
 `;
 
-const ResultsContainer = styled(Container)`
-  padding: 1rem;
-`;
-
 const ResultsCard = styled(Card)`
-  margin: 1rem;
+  margin: 1rem 0;
 `;
 
 const CardHeader = styled('div')`
@@ -92,8 +88,9 @@ const DesktopOnlyHeader = styled('header')`
 
   ${above.md(css`
     display: block;
+    font-family: ${fonts.primary};
     text-align: center;
-    font-size: 2rem;
+    font-size: 3rem;
     margin-bottom: 2rem;
   `)};
 `;
@@ -118,7 +115,7 @@ export const Results = ({ grit, optimism, gritPossible, optimismPossible }) => {
       transition={Fade}
       header={<H1>Results</H1>}
     >
-      <ResultsContainer>
+      <Container>
         <DesktopOnlyHeader>
           <H1>Results</H1>
         </DesktopOnlyHeader>
@@ -157,7 +154,7 @@ export const Results = ({ grit, optimism, gritPossible, optimismPossible }) => {
             </ResultsCard>
           </div>
         </DesktopLayout>
-      </ResultsContainer>
+      </Container>
     </PageLayout>
   );
 };

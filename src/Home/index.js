@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'react-emotion';
-import { colors } from '../styles';
+import { colors, fonts } from '../styles';
 import { PageLayout } from '../PageLayout';
 import { Fade } from '../Fade';
 import { ButtonLink } from '../Button';
@@ -13,14 +13,21 @@ const HomeLayout = styled(PageLayout)`
   text-align: center;
 `;
 
+const H1 = styled('h1')`
+  font-family: ${fonts.primary};
+  font-size: 3rem;
+`;
+
 const Cta = styled(ButtonLink)`
   color: ${colors.white};
 `;
 
 export const Home = () => (
   <HomeLayout background={colors.primary.light} transition={Fade}>
-    <h1>Resilience.</h1>
+    <H1>Resilience.</H1>
 
-    <Cta color={colors.primary.main} to="/grit/0">Get started</Cta>
+    <Cta color={colors.primary.main} to="/grit/0">
+      Get started
+    </Cta>
   </HomeLayout>
 );

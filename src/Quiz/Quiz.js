@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { REVERSE_SCORING } from '../constants';
 import { Container } from '../Container';
 import styled, { css } from 'react-emotion';
-import { above, colors } from '../styles';
+import { above, colors, fonts, fontWeight } from '../styles';
 import { navigate } from '@reach/router';
 import { Answer } from './Answer';
 import { Slide } from '../Slide';
@@ -29,9 +29,15 @@ const QuizContainer = styled(Container)`
   `)};
 `;
 
+const H1 = styled('h1')`
+  font-size: 1.5rem;
+  margin: 0;
+`
+
 const DesktopOnlyHeader = styled('h1')`
   display: none;
   font-size: 1.5rem;
+  font-family: ${fonts.primary};
 
   ${above.md(css`
     display: block;
@@ -52,6 +58,8 @@ const QuestionSection = styled('div')`
 
 const Question = styled('h2')`
   font-size: 2rem;
+  font-family: ${fonts.primary};
+  font-weight: ${fontWeight.semiBold};
   flex-grow: 1;
   display: flex;
   align-items: center;
@@ -122,7 +130,7 @@ export class Quiz extends Component {
 
     return (
       <QuizPageLayout
-        header={<h1>{name}</h1>}
+        header={<H1>{name}</H1>}
         transition={Slide}
         background={background}
       >
