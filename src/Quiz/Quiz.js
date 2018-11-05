@@ -149,7 +149,6 @@ export class Quiz extends Component {
                 <Answer
                   color={accent}
                   active={
-                    // TODO -- clean up
                     scoring === REVERSE_SCORING
                       ? answers.length - answer === i
                       : answer === i + 1
@@ -171,11 +170,12 @@ Quiz.propTypes = {
   selections: PropTypes.object,
   background: PropTypes.string,
   name: PropTypes.string.isRequired,
+  linkTo: PropTypes.string.isRequired,
   addScore: PropTypes.func.isRequired,
   questions: PropTypes.arrayOf(
     PropTypes.shape({
       question: PropTypes.string.isRequired,
-      id: PropTypes.string.isRequired,
+      id: PropTypes.number.isRequired,
       scoring: PropTypes.string.isRequired,
     })
   ).isRequired,
