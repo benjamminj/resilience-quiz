@@ -1,16 +1,4 @@
-import React from 'react';
-import { questions as questionsData, answers as answersData } from './data';
-import { Quiz } from '../Quiz';
-import { colors } from '../styles';
-export { Intro } from './Intro';
+export { OptimismIntro } from './OptimismIntro';
+export { questions as optimismQuestions, answers as optimismAnswers } from './data';
+export { OptimismQuiz } from './OptimismQuiz';
 
-export const OptimismQuiz = props => (
-  <Quiz
-    {...props}
-    questions={questionsData}
-    answers={answersData}
-    name="Optimism"
-    background={colors.secondary.light}
-    accent={colors.secondary.dark}
-  />
-);

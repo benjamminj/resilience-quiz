@@ -95,20 +95,7 @@ const DesktopOnlyHeader = styled('header')`
   `)};
 `;
 
-const getScore = selections =>
-  Object.values(selections).reduce((sum, value) => sum + value, 0);
-
-const roundPercent = (number, total) => Math.ceil((number / total) * 100);
-
-export const Results = ({ grit, optimism, gritPossible, optimismPossible }) => {
-  const gritScore = getScore(grit);
-  const optimismScore = getScore(optimism);
-  const totalScore = gritScore + optimismScore;
-  const totalPossible = gritPossible + optimismPossible;
-
-  const gritPercent = roundPercent(gritScore, gritPossible);
-  const optimismPercent = roundPercent(optimismScore, optimismPossible);
-
+export const Results = ({ gritScore, optimismScore, totalScore }) => {
   return (
     <PageLayout
       background={colors.primary.light}
@@ -123,9 +110,7 @@ export const Results = ({ grit, optimism, gritPossible, optimismPossible }) => {
           <TotalSection>
             <H2>Your resilience score</H2>
             <Circle>
-              <TotalScore>
-                {roundPercent(totalScore, totalPossible)}%
-              </TotalScore>
+              <TotalScore>{totalScore}%</TotalScore>
             </Circle>
           </TotalSection>
 
@@ -134,20 +119,20 @@ export const Results = ({ grit, optimism, gritPossible, optimismPossible }) => {
               <CardContent>
                 <CardHeader>
                   <H3>Your grit score</H3>
-                  <H4>{gritPercent}%</H4>
+                  <H4>{gritScore}%</H4>
                 </CardHeader>
 
-                <ProgressBar progress={gritPercent} />
+                <ProgressBar progress={gritScore} />
               </CardContent>
             </ResultsCard>
             <ResultsCard>
               <CardContent>
                 <CardHeader>
                   <H3>Your optimism score</H3>
-                  <H4>{optimismPercent}%</H4>
+                  <H4>{optimismScore}%</H4>
                 </CardHeader>
                 <ProgressBar
-                  progress={optimismPercent}
+                  progress={optimismScore}
                   color={colors.secondary.main}
                 />
               </CardContent>

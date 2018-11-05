@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Emoji } from '../Emoji';
 import { ButtonLink } from '../Button';
 import styled from 'react-emotion';
@@ -35,7 +36,7 @@ const P = styled('p')`
   max-width: ${breakpoints.md};
 `;
 
-export const Intro = ({ linkTo }) => (
+export const OptimismIntro = ({ linkTo }) => (
   <IntroLayout background={colors.secondary.light} transition={Fade}>
     <Container size="sm">
       <H2>
@@ -49,3 +50,7 @@ export const Intro = ({ linkTo }) => (
     </Container>
   </IntroLayout>
 );
+
+OptimismIntro.propTypes = {
+  linkTo: PropTypes.string.isRequired,
+}

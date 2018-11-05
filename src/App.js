@@ -5,10 +5,12 @@ import { Results } from './Results/Results';
 import { Home } from './Home';
 import { PosedRouter } from './PosedRouter';
 import { Redirect } from '@reach/router';
-import { GritQuiz } from './Grit';
+import { GritQuiz, gritQuestions, gritAnswers } from './Grit';
 import {
-  Intro as OptimismIntro,
+  OptimismIntro,
   OptimismQuiz,
+  optimismAnswers,
+  optimismQuestions,
 } from './Optimism';
 
 const Wrapper = styled('div')`
@@ -22,6 +24,18 @@ class App extends Component {
     optimism: {},
   };
 
+  /**
+   * @method addScore
+   * @description Update the score for a question in one of the quizzes
+   *
+   * @param {string} type - which quiz to update, grit or optimism
+   *
+   * @returns {function} additionHandler:
+   * Handler to actually add the option. This function takes 3 arguments, a question object,
+   * containing the `id` and the `scoring` details of the question,
+   * the number of total possible points for the question, and the score the user
+   * actually selected
+   */
   addScore = type => (question, numberPossible, score) => {
     const { [type]: section } = this.state;
 
@@ -37,8 +51,53 @@ class App extends Component {
     });
   };
 
+  /**
+   * @method getSum
+   *
+   * @param {number[]} numbers
+   * @return {number} sum
+   */
+  getSum = numbers => numbers.reduce((sum, num) => sum + num, 0);
+
+  /**
+   * @method getPointsPercentage
+   * 
+   * @param {Object<string, number>} selections - Object containing the scores for the selected answers
+   * @param {string[]} answers - list of possible answers for the quiz
+   * @param {Object[]} questions - list of the questions for the quiz
+   * 
+   * @return {number} score - percentage of points earned out of possible points.
+   */
+  getPointsPercentage = (selections, answers, questions) => {
+    const score = this.getSum(Object.values(selections));
+    const possiblePoints = questions.length * answers.length;
+
+    const percentage = Math.ceil((score / possiblePoints) * 100);
+    return percentage;
+  };
+
+  /**
+   * @method getAverage
+   * @param {number[]} scores
+   * @return {number} average
+   */
+  getAverage = scores => {
+    const avg = this.getSum(scores) / scores.length;
+    return Math.ceil(avg);
+  };
+
   render() {
     const { optimism, grit } = this.state;
+    const gritScore = this.getPointsPercentage(
+      grit,
+      gritQuestions,
+      gritAnswers
+    );
+    const optimismScore = this.getPointsPercentage(
+      optimism,
+      optimismQuestions,
+      optimismAnswers
+    );
 
     return (
       <Wrapper>
@@ -53,6 +112,8 @@ class App extends Component {
             * each one as a direct child of the router.
             */}
           <GritQuiz
+            answers={gritAnswers}
+            questions={gritQuestions}
             path="/grit/:currentId"
             selections={grit}
             addScore={this.addScore('grit')}
@@ -66,17 +127,17 @@ class App extends Component {
             path="/optimism/:currentId"
             selections={optimism}
             addScore={this.addScore('optimism')}
+            answers={optimismAnswers}
+            questions={optimismQuestions}
             linkTo="/results"
           />
 
-          <Results 
-            path="/results" 
-            grit={grit} 
-            optimism={optimism} 
-            gritPossible={25} // TODO
-            optimismPossible={25} 
+          <Results
+            path="/results"
+            gritScore={gritScore}
+            optimismScore={optimismScore}
+            totalScore={this.getAverage([gritScore, optimismScore])}
           />
-
         </PosedRouter>
       </Wrapper>
     );

@@ -172,7 +172,14 @@ Quiz.propTypes = {
   background: PropTypes.string,
   name: PropTypes.string.isRequired,
   addScore: PropTypes.func.isRequired,
-  questions: PropTypes.array.isRequired,
+  questions: PropTypes.arrayOf(
+    PropTypes.shape({
+      question: PropTypes.string.isRequired,
+      id: PropTypes.string.isRequired,
+      scoring: PropTypes.string.isRequired,
+    })
+  ).isRequired,
+  answers: PropTypes.arrayOf(PropTypes.string).isRequired,
 };
 
 Quiz.defaultProps = {

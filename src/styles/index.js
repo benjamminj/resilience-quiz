@@ -1,12 +1,11 @@
 export const colors = {
   // common
-  white: '#fefefe',
+  white: '#fff',
   black: '#111',
   // grey
   greyLight: '#aaa',
   greyMedium: '#999',
   greyDark: '#666',
-  // TODO -- palette
   primary: {
     light: '#f5fbfa',
     mediumLight: '#a6f7f2',
