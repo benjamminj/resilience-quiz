@@ -42,7 +42,7 @@ describe('<Results />', () => {
     const { getByText } = render(<Results {...props} totalScore={80} />);
 
     expect(
-      getByText(`You're doing pretty well on the optimism front`)
+      getByText(`You're doing pretty well on the resilience front`)
     ).toBeInTheDocument();
 
     expect(

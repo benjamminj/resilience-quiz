@@ -126,7 +126,7 @@ export const Results = ({ gritScore, optimismScore, totalScore }) => {
                 {totalScore < 90 &&
                   totalScore >= 70 && (
                     <>
-                      <P>You're doing pretty well on the optimism front</P>
+                      <P>You're doing pretty well on the resilience front</P>
                       <P>
                         There's room to improve, but you focus on being the best
                         version of you <Emoji icon="😎" label="sunglasses" />
