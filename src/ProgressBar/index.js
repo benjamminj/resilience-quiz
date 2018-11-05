@@ -2,17 +2,22 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled, { css } from 'react-emotion';
 import { colors } from '../styles';
+import posed from 'react-pose';
 
 const ProgressBarContainer = styled('div')`
   border: 1px solid ${colors.greyDark};
   border-radius: 4px;
   overflow: hidden;
-  height: 1rem;
+  height: 1.5rem;
   width: 100%;
   position: relative;
 `;
 
-const Progress = styled('div')`
+const PosedDiv = posed.div({
+  init: { x: '-100%' },
+  enter: { x: 0, transition: { delay: 300, duration: 500 } },
+});
+const Progress = styled(PosedDiv)`
   width: ${({ amount }) => amount}%;
   position: absolute;
   border: 1px solid ${({ color }) => color};

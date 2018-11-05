@@ -1,7 +1,9 @@
 import React from 'react';
 import styled, { css } from 'react-emotion';
 import { above, colors } from '../styles';
-import { ReactComponent as CircleIcon } from './progress.svg';
+import { ProgressIcon } from './ProgressIcon';
+// import { ReactComponent as CircleSvg } from './progress.svg';
+import posed from 'react-pose';
 
 const radius = 45;
 const circleX = 50;
@@ -10,11 +12,11 @@ const circleY = 50;
 const dashArray = 2 * Math.PI * radius;
 const size = '15rem';
 
-const Circle = styled(CircleIcon)`
+const Circle = styled(ProgressIcon)`
   width: 100%;
   height: 100%;
-  fill: white;
-  transform: rotate(-90deg);
+  /* fill: white; */
+  /* transform: rotate(-90deg); */
   position: absolute;
   margin: 0 auto;
   top: 0;
@@ -22,26 +24,6 @@ const Circle = styled(CircleIcon)`
   ${above.md(css`
     margin: 2rem auto;
   `)};
-
-  circle {
-    stroke-width: 6;
-    cx: ${circleX};
-    cy: ${circleY};
-    r: ${radius};
-    fill: none;
-  }
-
-  #progress-background {
-    stroke: ${colors.greyLight};
-  }
-
-  #progress-meter {
-    stroke: ${colors.primary.dark};
-    stroke-dasharray: ${dashArray};
-    /* Spins the progress in by the percentage amount */
-    stroke-dashoffset: ${props => dashArray * (1 - (props.percent))};
-    stroke-linecap: round;
-  }
 `;
 
 const ProgressWrapper = styled('span')`
@@ -59,4 +41,4 @@ export const Progress = ({ percent }) => (
     <Circle percent={percent / 100} />
     <span>{percent}%</span>
   </ProgressWrapper>
-)
+);
