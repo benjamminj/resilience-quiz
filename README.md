@@ -1,44 +1,17 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Resilience
 
-## Available Scripts
+## A Few Technical Design Considerations 
 
-In the project directory, you can run:
+### State Management
 
-### `npm start`
+Since this is just a small app, I opted to use simple React component state to hold the quiz state. For something larger perhaps a Redux store could work, but I felt that the size & scope of the quiz didn't quite merit the amount of boilerplate & added complexity using Redux tends to come with.
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### Routing
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+I finally got to try out [Reach Router](https://reach.tech/router)! 🙌
 
-### `npm test`
+Reach Router is a super great, simple project that showed up on the React scene in the last year or so — one of the coolest things about this router is that it automagically handles focus state to guarantee that you're never tabbing thru a route that isn't on the screen.
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Animations & Transitions
 
-### `npm run build`
-
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+I had a lot of fun using [`pose`](https://popmotion.io/pose/) for the animations. I've been playing with this lately and it's a fantastic animation library. It makes declaring multi-stage, complex animations fit perfect with the declarative React component model while still feeling like you're authoring them in simple CSS. 👌
