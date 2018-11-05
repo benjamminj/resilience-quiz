@@ -43,7 +43,7 @@ PageLayout.propTypes = {
   className: PropTypes.string,
   header: PropTypes.node,
   /** Expects a posed component to handle the route transition */
-  transition: PropTypes.node.isRequired,
+  transition: PropTypes.func.isRequired,
 };
 
 PageLayout.defaultProps = {

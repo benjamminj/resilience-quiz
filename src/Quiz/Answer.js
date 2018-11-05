@@ -29,9 +29,9 @@ const Check = styled(CheckIcon)`
 
 export const Answer = ({ children, color, active, onClick }) => (
   <StyledButton
-    outline={!active}
+    outline={!active ? 1 : 0}
     color={active ? color : colors.greyMedium}
-    active={active}
+    active={active ? 1 : 0}
     onClick={onClick}
   >
     {children}

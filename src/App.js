@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import styled from 'react-emotion';
 import { REVERSE_SCORING } from './constants';
-import { Results } from './Results/Results';
+import { Results } from './Results';
 import { Home } from './Home';
 import { PosedRouter } from './PosedRouter';
 import { Redirect } from '@reach/router';
@@ -18,7 +18,7 @@ const Wrapper = styled('div')`
   min-height: 100vh;
 `;
 
-class App extends Component {
+export default class App extends Component {
   state = {
     grit: {},
     optimism: {},
@@ -143,5 +143,3 @@ class App extends Component {
     );
   }
 }
-
-export default App;
