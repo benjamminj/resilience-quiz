@@ -24,6 +24,7 @@ const Circle = styled(CircleIcon)`
   `)};
 
   circle {
+    stroke-width: 6;
     cx: ${circleX};
     cy: ${circleY};
     r: ${radius};
@@ -31,16 +32,15 @@ const Circle = styled(CircleIcon)`
   }
 
   #progress-background {
-    stroke-width: 4;
     stroke: ${colors.greyLight};
   }
 
   #progress-meter {
-    stroke-width: 4;
     stroke: ${colors.primary.dark};
     stroke-dasharray: ${dashArray};
     /* Spins the progress in by the percentage amount */
     stroke-dashoffset: ${props => dashArray * (1 - (props.percent))};
+    stroke-linecap: round;
   }
 `;
 

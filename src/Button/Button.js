@@ -20,7 +20,7 @@ export const Button = styled(PosedButton)`
   background: ${props => props.color};
   border-color: ${props => props.color};
   border-style: solid;
-  border-width: 2px;
+  border-width: 3px;
   border-radius: 4px;
   box-shadow: 0 2px 4px ${rgba('#000', 0.2)};
 

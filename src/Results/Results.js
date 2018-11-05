@@ -4,10 +4,8 @@ import { Container } from '../Container';
 import { Card, CardContent } from '../Card';
 import { above, colors, fonts, fontWeight } from '../styles';
 import { ProgressBar } from '../ProgressBar';
-import { rgba } from 'polished';
 import { Fade } from '../Fade';
 import { PageLayout } from '../PageLayout';
-import { ReactComponent as CircleIcon } from './progress.svg';
 import {Progress} from './Progress';
 
 const H1 = styled('h1')`

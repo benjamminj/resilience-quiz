@@ -7,6 +7,6 @@ export const OptimismQuiz = props => (
     {...props}
     name="Optimism"
     background={colors.secondary.light}
-    accent={colors.secondary.main} // TODO -- play with contrast colors
+    accent={colors.secondary.dark}
   />
 );

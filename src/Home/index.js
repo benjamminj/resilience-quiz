@@ -26,7 +26,7 @@ export const Home = () => (
   <HomeLayout background={colors.primary.light} transition={Fade}>
     <H1>Resilience.</H1>
 
-    <Cta color={colors.primary.main} to="/grit/0">
+    <Cta color={colors.primary.dark} to="/grit/0">
       Get started
     </Cta>
   </HomeLayout>

@@ -46,7 +46,7 @@ export const OptimismIntro = ({ linkTo }) => (
         Now that we know how much grit you have, only a few
         more questions to go.
       </P>
-      <Cta color={colors.secondary.main} to={linkTo}>Ok, let's do this!</Cta>
+      <Cta color={colors.secondary.dark} to={linkTo}>Ok, let's do this!</Cta>
     </Container>
   </IntroLayout>
 );
