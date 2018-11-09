@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled, { css } from 'react-emotion';
-import { colors } from '../styles';
-import { Button } from '../Button';
-import { ReactComponent as CheckIcon } from '../icons/check.svg';
+import { colors } from '../../styles';
+import { Button } from '../../components/Button';
+import { ReactComponent as CheckIcon } from '../../icons/check.svg';
 
 const StyledButton = styled(Button)`
   padding: 1.25rem;

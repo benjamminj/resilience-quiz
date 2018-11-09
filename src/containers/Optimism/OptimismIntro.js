@@ -1,12 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Emoji } from '../Emoji';
-import { ButtonLink } from '../Button';
+import { Emoji } from '../../components/Emoji';
+import { ButtonLink } from '../../components/Button';
 import styled from 'react-emotion';
-import { Container } from '../Container';
-import { colors, breakpoints, fonts, fontWeight } from '../styles';
-import { Fade } from '../Fade';
-import { PageLayout } from '../PageLayout';
+import { Container } from '../../components/Container';
+import { colors, breakpoints, fonts, fontWeight } from '../../styles';
+import { Fade } from '../../components/Fade';
+import { PageLayout } from '../../components/PageLayout';
 
 const IntroLayout = styled(PageLayout)`
   padding: 1rem;

@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled, { css } from 'react-emotion';
-import { above, colors, headerHeight } from '../styles';
-import { ReactComponent as ArrowIcon } from '../icons/arrow-left.svg';
 import posed from 'react-pose';
 import { rgba } from 'polished';
+import { above, colors, headerHeight } from '../../styles';
+import { ReactComponent as ArrowIcon } from '../../icons/arrow-left.svg';
 
 const PosedHeader = posed.header({
   init: { opacity: 1 },

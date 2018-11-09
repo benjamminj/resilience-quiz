@@ -1,13 +1,13 @@
 import React from 'react';
 import styled, { css } from 'react-emotion';
-import { Container } from '../Container';
-import { Card, CardContent } from '../Card';
-import { above, colors, fonts, fontWeight } from '../styles';
-import { ProgressBar } from '../ProgressBar';
-import { Fade } from '../Fade';
-import { PageLayout } from '../PageLayout';
+import { Container } from '../../components/Container';
+import { Card, CardContent } from '../../components/Card';
+import { above, colors, fonts, fontWeight } from '../../styles';
+import { ProgressBar } from '../../components/ProgressBar';
+import { Fade } from '../../components/Fade';
+import { PageLayout } from '../../components/PageLayout';
 import { Progress } from './Progress';
-import { Emoji } from '../Emoji';
+import { Emoji } from '../../components/Emoji';
 
 const H1 = styled('h1')`
   font-size: inherit;

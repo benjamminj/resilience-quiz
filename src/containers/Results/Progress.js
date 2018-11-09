@@ -1,6 +1,6 @@
 import React from 'react';
 import styled, { css } from 'react-emotion';
-import { above } from '../styles';
+import { above } from '../../styles';
 import { ProgressIcon } from './ProgressIcon';
 
 const size = '15rem';

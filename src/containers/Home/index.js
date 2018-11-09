@@ -1,9 +1,9 @@
 import React from 'react';
 import styled from 'react-emotion';
-import { colors, fonts } from '../styles';
-import { PageLayout } from '../PageLayout';
-import { Fade } from '../Fade';
-import { ButtonLink } from '../Button';
+import { colors, fonts } from '../../styles';
+import { PageLayout } from '../../components/PageLayout';
+import { Fade } from '../../components/Fade';
+import { ButtonLink } from '../../components/Button';
 
 const HomeLayout = styled(PageLayout)`
   display: flex;

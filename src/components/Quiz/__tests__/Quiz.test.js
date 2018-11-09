@@ -1,8 +1,8 @@
 import React from 'react';
-import { render, fireEvent, queryByTestId } from 'react-testing-library';
+import { render, fireEvent } from 'react-testing-library';
 import { Quiz } from '../';
 import { navigate } from '@reach/router';
-import { DEFAULT_SCORING } from '../../constants';
+import { DEFAULT_SCORING } from '../../../constants';
 
 jest.mock('@reach/router', () => ({
   navigate: jest.fn(),

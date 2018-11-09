@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { REVERSE_SCORING } from '../constants';
-import { Container } from '../Container';
 import styled, { css } from 'react-emotion';
-import { above, colors, fonts, fontWeight } from '../styles';
+import { REVERSE_SCORING } from '../../constants';
+import { Container } from '../Container';
+import { above, colors, fonts, fontWeight } from '../../styles';
 import { navigate } from '@reach/router';
 import { Answer } from './Answer';
 import { Slide } from '../Slide';

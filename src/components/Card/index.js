@@ -1,5 +1,5 @@
 import styled from 'react-emotion';
-import { colors } from '../styles';
+import { colors } from '../../styles';
 import { rgba } from 'polished';
 
 export const Card = styled('div')`

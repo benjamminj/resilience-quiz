@@ -1,6 +1,6 @@
 import React from 'react';
-import { Quiz } from '../Quiz';
-import { colors } from '../styles';
+import { Quiz } from '../../components/Quiz';
+import { colors } from '../../styles';
 
 export const OptimismQuiz = props => (
   <Quiz

@@ -1,17 +1,17 @@
 import React, { Component } from 'react';
 import styled from 'react-emotion';
 import { REVERSE_SCORING } from './constants';
-import { Results } from './Results';
-import { Home } from './Home';
-import { PosedRouter } from './PosedRouter';
+import { Results } from './containers/Results';
+import { Home } from './containers/Home';
+import { PosedRouter } from './components/PosedRouter';
 import { Redirect } from '@reach/router';
-import { GritQuiz, gritQuestions, gritAnswers } from './Grit';
+import { GritQuiz, gritQuestions, gritAnswers } from './containers/Grit';
 import {
   OptimismIntro,
   OptimismQuiz,
   optimismAnswers,
   optimismQuestions,
-} from './Optimism';
+} from './containers/Optimism';
 
 const Wrapper = styled('div')`
   background-color: #fefefe;

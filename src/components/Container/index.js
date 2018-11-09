@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import styled, { css } from 'react-emotion';
-import { above, breakpoints } from '../styles';
+import { above, breakpoints } from '../../styles';
 
 export const Container = styled('div')`
   max-width: 100vw;

@@ -1,7 +1,7 @@
 import {
   DEFAULT_SCORING as DEFAULT,
   REVERSE_SCORING as REVERSE,
-} from '../constants';
+} from '../../constants';
 
 export const questions = [
   {

@@ -1,6 +1,6 @@
 import React from 'react';
 import posed from 'react-pose';
-import { colors } from '../styles';
+import { colors } from '../../styles';
 import styled, { css } from 'react-emotion';
 
 const radius = 45;
